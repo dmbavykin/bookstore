@@ -4,13 +4,16 @@ RSpec.describe Author, type: :model do
   let(:author) { FactoryBot.create :author }
 
   context 'validates' do
-    it 'invalid without firstname' do
-      expect(FactoryBot.build :author, firstname: nil).not_to be_valid
+    %i(firstname lastname).each do |field|
+      it "invalid without #{field}" do
+        should validate_presence_of(field)
+      end
     end
+  end
 
-    it 'invalid without lastname' do
-      expect(FactoryBot.build :author, lastname: nil).not_to be_valid
+  context 'check relations' do
+    it 'has many books' do
+      should have_many(:books)
     end
-
   end
 end

@@ -4,17 +4,18 @@ RSpec.describe Book, type: :model do
   let(:book) { FactoryBot.create :book }
 
   context 'validates' do
-    it 'invalid without title' do
-      expect(FactoryBot.build :book, title: nil).not_to be_valid
+    %i(title price quantity).each do |field|
+      it "invalid without #{field}" do
+        should validate_presence_of(field)
+      end
     end
+  end
 
-    it 'invalid without price' do
-      expect(FactoryBot.build :book, price: nil).not_to be_valid
+  context 'check relations' do
+    %i(author category).each do |field|
+      it "belongs to #{field}" do
+        should belong_to(field)
+      end
     end
-
-    it 'invalid without quantity' do
-      expect(FactoryBot.build :book, quantity: nil).not_to be_valid
-    end
-
   end
 end

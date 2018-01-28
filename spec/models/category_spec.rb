@@ -4,12 +4,20 @@ RSpec.describe Category, type: :model do
   let(:category) { FactoryBot.create :category}
 
   context 'validates' do
+    subject { FactoryBot.build(:category) }
+
     it 'invalid without title' do
-      expect(FactoryBot.build :category, title: nil).not_to be_valid
+      should validate_presence_of(:title)
     end
 
     it 'does not allow duplicate titles' do
-      expect(FactoryBot.build :category, title: category.title).not_to be_valid
+      should validate_uniqueness_of(:title)
+    end
+  end
+
+  context 'check relations' do
+    it 'has many books' do
+      should have_many(:books)
     end
   end
 end
