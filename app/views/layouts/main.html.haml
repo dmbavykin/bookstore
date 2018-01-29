@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title= Bookstore
+    = csrf_meta_tags
+    %meta{ charset: "UTF-8" }
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %nav.container
+      .row
+        .col-md-2
+          %strong Bookstore
+        .col-md-3.col-md-offset-5
+          %a.btn.btn-link{ href: '#' } Home
+          %a.btn.btn-link{ href: '#' } Shop
+    .container
+      = yield
+    %footer.container
+      .row
+        .col-md-3
+          %a.btn.btn-link{ href: '#' } Home
+          %a.btn.btn-link{ href: '#' } Shop
+          %a.btn.btn-link{ href: '#' } Orders
+          %a.btn.btn-link{ href: '#' } Settings
