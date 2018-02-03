@@ -234,7 +234,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.3, >= 3.3.7)
+  bootstrap-sass (~> 3.3.7)
   coffee-rails (~> 4.2)
   database_cleaner (~> 1.6, >= 1.6.2)
   factory_bot_rails (~> 4.8, >= 4.8.2)
