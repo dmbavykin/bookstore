@@ -1,33 +1,23 @@
 %main.container
   #slider.carousel.slide{'data-ride': "carousel"}
     %ol.carousel-indicators
-      %li.active{'data-target': "#slider", 'data-slide-to': "0"}
-      %li{'data-target': "#slider", 'data-slide-to': "1"}
+      - @slider_items.each_with_index do |item, index|
+        %li{'data-target': "#slider", 'data-slide-to': index, class: ('active' if index.zero?) }
     .carousel-inner{role: "listbox"}
-      .item.active
-        .row
-          .col-sm-5
-            .general-img-wrap
-              %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-          .col-sm-7
-            .mb-60
-              %h1 Real-Life Responsive Web Design
-              %p.lead Smart front-end techniques and design patterns derived from real-life responsive projects
-              %p.lead.small Vitaly Friedman, Daniel Mall,Vitaly Friedman
-              .general-align
-                %button.disabled.btn Buy Now
-      .item
-        .row
-          .col-sm-5
-            .general-img-wrap
-              %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-          .col-sm-7
-            .mb-60
-              %h1 Real-Life Responsive Web Design
-              %p.lead Smart front-end techniques and design patterns derived from real-life responsive projects
-              %p.lead.small Vitaly Friedman, Daniel Mall,Vitaly Friedman
-              .general-align
-                %button.btn.btn-primary Buy Now
+      - @slider_items.each_with_index do |item, index|
+        %div{class: index.zero? ? 'item active' : 'item'}
+          .row
+            .col-sm-5
+              .general-img-wrap
+                %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
+            .col-sm-7
+              .mb-60
+                %h1= item.title
+                - unless item.description.empty?
+                  %p.lead= item.description
+                %p.lead.small= "#{item.author.firstname} #{item.author.lastname}"
+                .general-align
+                  %button{class: item.quantity.zero? ? "disabled btn" : 'btn btn-primary'} Buy Now
     %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
       %span.icon-prev{'aria-hidden': "true"}
       %span.sr-only Previous

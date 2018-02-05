@@ -6,6 +6,7 @@ class CatalogsController < ApplicationController
 
   def show
     @books = Book.readonly.where(category_id: params[:id])
+    @reviews = Rating.where(book_id: params[:id]).includes(:customer)
     render :index
   end
 end
