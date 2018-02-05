@@ -1,6 +1,4 @@
-class BooksController < ActionController::Base
-  protect_from_forgery with: :exception
-  layout 'layouts/main'
+class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
