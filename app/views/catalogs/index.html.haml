@@ -17,9 +17,9 @@
             %a{href: "#"} Price: Low to hight
     %ul.list-inline.pt-10.mb-25.mr-240
       %li.mr-35
-        %a.filter-link{href: "#"}
+        = link_to(catalogs_path, class: 'filter-link') do
           All
-          %span.badge.general-badge 135
+          %span.badge.general-badge= Book.count
       - categories.each do |category|
         %li.mr-35
           = link_to(catalog_path(category.id), class: 'filter-link') do
