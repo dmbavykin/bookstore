@@ -14,6 +14,8 @@
             %img{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
           %a.img-link{href: "#"}
             %img{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
+          %a.img-link{href: '#'}
+            = cl_image_tag(@book.image, :width => 100, :height => 150)
     .col-sm-6
       %h1.mt-res-0= @book.title
       %p.lead.small= "#{@book.author.firstname} #{@book.author.lastname}"
@@ -38,19 +40,20 @@
   .mb-80
     %h3.in-gold-500.mb-25
       Reviews (
-      = @reviews.length
+      = @reviews ? @reviews.length : 0
       )
-    - @reviews.each do |review|
-      .general-message-wrap.divider-lg
-        .clearfix
-          %img.img-circle.logo-size.inlide-block.pull-left{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
-          .ml-70
-            %div
-              .general-message-date.hidden-xs= review.created_at.to_time.strftime('%d/%m/%y')
-              .max-240
-                .general-message-verified Verified Reviewer
-                .general-message-name= "#{review.customer.firstname} #{review.customer.lastname}"
-            .mb-15
-              - review.rate.times do
-                %i.fa.fa-star.rate-star
-            %p= review.review
+    - if @reviews
+      - @reviews.each do |review|
+        .general-message-wrap.divider-lg
+          .clearfix
+            %img.img-circle.logo-size.inlide-block.pull-left{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
+            .ml-70
+              %div
+                .general-message-date.hidden-xs= review.created_at.to_time.strftime('%d/%m/%y')
+                .max-240
+                  .general-message-verified Verified Reviewer
+                  .general-message-name= "#{review.customer.firstname} #{review.customer.lastname}"
+                  .mb-15
+                    - review.rate.times do
+                      %i.fa.fa-star.rate-star
+                      %p= review.review
