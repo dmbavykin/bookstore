@@ -1,0 +1,18 @@
+.col-xs-6.col-sm-3
+  .general-thumb-wrap
+    .thumbnail.general-thumbnail
+      - if book.images.any?
+        = cl_image_tag(book.images.first.path, class: 'img-shadow general-thumbnail-img')
+      .thumb-hover
+        .general-thumb-link-wrap
+          = link_to book_path(book.id), class: 'thumb-hover-link' do
+            %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+          = link_to "#", class: 'thumb-hover-link' do
+            %i.fa.fa-shopping-cart.thumb-icon
+  .general-thumb-info
+    %p.title= book.title
+    %p.font-16.in-gold-500
+      €
+      = book.price.to_f
+    %span.divider-sm
+    %p.lead.small= "#{book.author.firstname} #{book.author.lastname}"
