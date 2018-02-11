@@ -32,6 +32,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'html2haml', '~> 2.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -48,3 +49,4 @@ gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'mini_magick', '~> 4.8'
 gem 'cloudinary', '~> 1.8', '>= 1.8.3'
+gem 'devise', '~> 4.4', '>= 4.4.1'
