@@ -4,7 +4,7 @@ RSpec.describe Author, type: :model do
   let(:author) { FactoryBot.create :author }
 
   context 'validates' do
-    %i(firstname lastname).each do |field|
+    %i[firstname lastname].each do |field|
       it "invalid without #{field}" do
         should validate_presence_of(field)
       end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  let(:category) { FactoryBot.create :category}
+  let(:category) { FactoryBot.create :category }
 
   context 'validates' do
     subject { FactoryBot.build(:category) }

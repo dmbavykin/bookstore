@@ -1,5 +1,4 @@
 class CatalogsController < ApplicationController
-
   def index
     @books = Book.readonly.all
   end
