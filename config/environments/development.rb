@@ -67,6 +67,4 @@ Rails.application.configure do
     enable_starttls_auto: true,
     port:                 587
   }
-
-
 end
