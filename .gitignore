@@ -1,5 +1,5 @@
 /.bundle
-
+/.idea/*
 /log/*
 /tmp/*
 !/log/.keep

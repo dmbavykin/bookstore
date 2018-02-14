@@ -6,8 +6,7 @@
     .col-sm-6
       .product-gallery
         .mb-20
-          - if @book.images.any?
-            = cl_image_tag(@book.images.first.path, class: 'img-responsive')
+          = cl_image_tag(book_main_image(@book), class: 'img-responsive')
         .images.clearfix
           - if @book.images.length > 1
             - @book.images.offset(1).each do |image|

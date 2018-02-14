@@ -9,9 +9,9 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     - if notice
-      %div.alert.alert-success.text-center= notice
+      .alert.alert-success.text-center= notice
     - if alert
-      %div.alert.alert-danger.text-center= alert
+      .alert.alert-danger.text-center= alert
 
     = render 'layouts/header'
     = yield
