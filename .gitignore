@@ -4,7 +4,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/vendor/bundle/*
 /node_modules
 /yarn-error.log
 

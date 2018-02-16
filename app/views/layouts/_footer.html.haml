@@ -4,7 +4,7 @@
       .col-sm-9
         %ul.list-inline.general-align.mb-25
           %li= link_to('Home', root_path, class: 'nav-link')
-          %li= link_to('Shop', catalogs_path, class: 'nav-link')
+          %li= link_to('Shop', categories_path, class: 'nav-link')
           - if current_user
             %li= link_to('Orders', '#', class: 'nav-link')
             %li= link_to('Settings', '#', class: 'nav-link')
