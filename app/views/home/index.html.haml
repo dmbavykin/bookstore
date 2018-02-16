@@ -5,17 +5,17 @@
         %li{'data-target': "#slider", 'data-slide-to': index, class: ('active' if index.zero?) }
     .carousel-inner{role: "listbox"}
       - @slider_items.each_with_index do |item, index|
-        %div{class: index.zero? ? 'item active' : 'item'}
+        %div{class: item.class_for_slide(index)}
           .row
             .col-sm-5
               .general-img-wrap
-                %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
+                = cl_image_tag(book_main_image(item), class: 'img-shadow general-thumbnail-img')
             .col-sm-7
               .mb-60
                 %h1= item.title
                 - unless item.description.empty?
                   %p.lead= item.description
-                %p.lead.small= "#{item.author.firstname} #{item.author.lastname}"
+                %p.lead.small= item.author.full_name
                 .general-align
                   %button{class: item.quantity.zero? ? "disabled btn" : 'btn btn-primary'} Buy Now
     %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
@@ -34,4 +34,4 @@
     %h3 Best Sellers
     .row
       - Book.best_sellers.each do |book|
-        = render 'partials/book', book: book, disabled: book.quantity.zero?
+        = render 'partials/book', book: book.decorate, disabled: book.quantity.zero?
