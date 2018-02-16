@@ -60,4 +60,4 @@
         - books.each do |book|
           = render 'partials/book', book: book.decorate, disabled: false
     .text-center
-      %button.btn.btn-primary View More
+      = link_to "View More", categories_path(page: @books.current_page + 1), class: 'btn btn-primary'

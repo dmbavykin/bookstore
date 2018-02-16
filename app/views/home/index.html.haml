@@ -29,9 +29,9 @@
     %h2.h1= t('main.welcome')
     .mb-res-50
       %p= t('main.welcome_subphrase')
-    %button.btn.btn-default Get Started
+    %button.btn.btn-default= t('main.welcome_btn')
   .mb-35
-    %h3 Best Sellers
+    %h3= t('main.best_sellers')
     .row
-      - Book.best_sellers.each do |book|
+      - @best_sellers.each do |book|
         = render 'partials/book', book: book.decorate, disabled: book.quantity.zero?
