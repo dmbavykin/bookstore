@@ -29,6 +29,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'draper', '~> 3.0', '>= 3.0.1'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'cancancan', '~> 2.1', '>= 2.1.3'
 
 group :development, :test do
   gem 'database_cleaner', '~> 1.6', '>= 1.6.2'

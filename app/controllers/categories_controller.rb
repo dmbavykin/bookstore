@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  load_and_authorize_resource
   def index
     @filter = params[:filter] || :newest
     @books = Book.public_send(@filter).page(params[:page])
@@ -6,7 +7,6 @@ class CategoriesController < ApplicationController
 
   def show
     @filter = params[:filter] || :newest
-    @category = Category.find(params[:id])
     @books = Book.where(category_id: @category).public_send(@filter).page(params[:page])
   end
 end
