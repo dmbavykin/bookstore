@@ -10,8 +10,6 @@ gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'cloudinary', '~> 1.8', '>= 1.8.3'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.4', '>= 4.4.1'
-gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
-gem 'ffaker', '~> 2.8', '>= 2.8.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.3'
 gem 'haml', '~> 5.0', '>= 5.0.4'
@@ -30,12 +28,16 @@ gem 'omniauth-facebook', '~> 4.0'
 gem 'draper', '~> 3.0', '>= 3.0.1'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'cancancan', '~> 2.1', '>= 2.1.3'
+gem 'simple_form', '~> 3.5', '>= 3.5.1'
+gem 'country_select', '~> 3.1', '>= 3.1.1'
 
 group :development, :test do
   gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
   gem 'pry', '~> 0.11.3'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
+  gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  gem 'ffaker', '~> 2.8', '>= 2.8.1'
 end
 
 group :development do

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_or_guest
-    current_user ? current_user : guest_user
+    current_user || guest_user
   end
 
   def guest_user

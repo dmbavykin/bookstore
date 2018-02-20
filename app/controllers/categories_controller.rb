@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  load_and_authorize_resource
+  load_resource
   def index
     @filter = params[:filter] || :newest
     @books = Book.public_send(@filter).page(params[:page])
