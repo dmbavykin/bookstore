@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :customer
+  belongs_to :user
   belongs_to :credit_card
   has_many :addresses, as: :addressable, dependent: :destroy
   validates :total_price, :completed_date, :state, presence: true

@@ -6,14 +6,14 @@ RSpec.describe Author, type: :model do
   context 'validates' do
     %i[firstname lastname].each do |field|
       it "invalid without #{field}" do
-        should validate_presence_of(field)
+        is_expected.to validate_presence_of(field)
       end
     end
   end
 
   context 'check relations' do
-    it 'has many books' do
-      should have_many(:books)
+    it 'has and belongs to many books' do
+      is_expected.to have_and_belong_to_many(:books)
     end
   end
 end

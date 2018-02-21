@@ -5,13 +5,13 @@ RSpec.describe Image, type: :model do
 
   context 'validates' do
     it 'invalid without path' do
-      should validate_presence_of(:path)
+      is_expected.to validate_presence_of(:path)
     end
   end
 
   context 'check relations' do
     it 'belongs to book' do
-      should belong_to(:book)
+      is_expected.to belong_to(:book)
     end
   end
 end

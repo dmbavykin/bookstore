@@ -7,17 +7,17 @@ RSpec.describe Category, type: :model do
     subject { FactoryBot.build(:category) }
 
     it 'invalid without title' do
-      should validate_presence_of(:title)
+      is_expected.to validate_presence_of(:title)
     end
 
     it 'does not allow duplicate titles' do
-      should validate_uniqueness_of(:title)
+      is_expected.to validate_uniqueness_of(:title)
     end
   end
 
   context 'check relations' do
     it 'has many books' do
-      should have_many(:books)
+      is_expected.to have_many(:books)
     end
   end
 end

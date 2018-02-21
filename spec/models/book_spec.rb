@@ -6,16 +6,20 @@ RSpec.describe Book, type: :model do
   context 'validates' do
     %i[title price quantity].each do |field|
       it "invalid without #{field}" do
-        should validate_presence_of(field)
+        is_expected.to validate_presence_of(field)
       end
     end
   end
 
   context 'check relations' do
-    %i[author category].each do |field|
-      it "belongs to #{field}" do
-        should belong_to(field)
-      end
+
+    it "belongs to category" do
+      is_expected.to belong_to(:category)
     end
+
+    it "has and belongs to many to author" do
+      is_expected.to have_and_belong_to_many(:author)
+    end
+
   end
 end

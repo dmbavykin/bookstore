@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Order, type: :model do
-  let(:order) { FactoryBot.create :order }
+RSpec.describe Review, type: :model do
+  let(:review) { FactoryBot.create :review }
 
   context 'validates' do
-    %i[total_price completed_date state].each do |field|
+    %i[comment_text name state].each do |field|
       it "invalid without #{field}" do
         is_expected.to validate_presence_of(field)
       end
@@ -12,14 +12,10 @@ RSpec.describe Order, type: :model do
   end
 
   context 'check relations' do
-    %i[user credit_card].each do |field|
+    %i[book user].each do |field|
       it "belongs to #{field}" do
         is_expected.to belong_to(field)
       end
-    end
-
-    it "has one address" do
-      is_expected.to have_my(:address)
     end
   end
 end
