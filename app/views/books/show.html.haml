@@ -48,8 +48,8 @@
                 .general-message-date.hidden-xs= review.created_at.to_time.strftime('%d/%m/%y')
                 .max-240
                   .general-message-verified Verified Reviewer
-                  .general-message-name= "#{review.customer.firstname} #{review.customer.lastname}"
+                  .general-message-name= review.name
                   .mb-15
-                    - review.rate.times do
+                    - review.rating.times do
                       %i.fa.fa-star.rate-star
-                      %p= review.review
+                      %p= review.comment_text
