@@ -15,7 +15,7 @@
                 %h1= item.title
                 - unless item.description.empty?
                   %p.lead= item.description
-                %p.lead.small= item.author.full_name
+                %p.lead.small= item.authors
                 .general-align
                   %button{class: item.quantity.zero? ? "disabled btn" : 'btn btn-primary'} Buy Now
     %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}

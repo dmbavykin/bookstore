@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220121313) do
+ActiveRecord::Schema.define(version: 20180220191136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20180220121313) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "authors_books", id: false, force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_authors_books_on_author_id"
+    t.index ["book_id", "author_id"], name: "index_authors_books_on_book_id_and_author_id"
+    t.index ["book_id"], name: "index_authors_books_on_book_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
@@ -44,9 +52,7 @@ ActiveRecord::Schema.define(version: 20180220121313) do
     t.integer "quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "author_id"
     t.bigint "category_id"
-    t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["category_id"], name: "index_books_on_category_id"
   end
 
@@ -85,15 +91,17 @@ ActiveRecord::Schema.define(version: 20180220121313) do
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.text "review"
-    t.integer "rate"
+  create_table "reviews", force: :cascade do |t|
+    t.string "comment_text", default: "", null: false
+    t.string "name", default: "", null: false
+    t.integer "state", null: false
+    t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "book_id"
-    t.bigint "customer_id"
-    t.index ["book_id"], name: "index_ratings_on_book_id"
-    t.index ["customer_id"], name: "index_ratings_on_customer_id"
+    t.bigint "user_id"
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
