@@ -3,12 +3,14 @@ class AddressesController < ApplicationController
 
   def create
     @address = current_user.addresses.create(address_params)
-    redirect_to edit_user_path(current_user), notice: t('address.successful.create')
+    @address.errors.any? ? flash[:alert] = t('address.failure.create') : flash[:notice] = t('address.successful.create')
+    redirect_to edit_user_registration_path
   end
 
   def update
     @address.update(address_params)
-    redirect_to edit_user_path(current_user), notice: t('address.successful.update')
+    @address.errors.any? ? flash[:alert] = t('address.failure.update') : flash[:notice] = t('address.successful.update')
+    redirect_to edit_user_registration_path
   end
 
   private

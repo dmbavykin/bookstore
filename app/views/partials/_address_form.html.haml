@@ -1,24 +1,24 @@
-= f.hidden_field :kind, value: kind
+= f.hidden_field :kind, id: kind, value: kind
 .form-group
-  = f.input :first_name, input_html: { class: 'form-control' }, placeholder: 'First Name',
+  = f.input :first_name, input_html: { class: 'form-control', id: "#{kind}_first_name" }, placeholder: 'First Name',
     label_html: { class: 'control-label input-label' }, label: 'First Name'
 .form-group
-  = f.input :last_name, input_html: { class: 'form-control' }, placeholder: "Last Name",
+  = f.input :last_name, input_html: { class: 'form-control', id: "#{kind}_last_name" }, placeholder: "Last Name",
     label_html: { class: 'control-label input-label' }, label: 'Last Name'
 .form-group
-  = f.input :address, input_html: { class: 'form-control' }, placeholder: "Address",
+  = f.input :address, input_html: { class: 'form-control', id: "#{kind}_address" }, placeholder: "Address",
     label_html: { class: 'control-label input-label' }, label: 'Address'
 .form-group
-  = f.input :city, input_html: { class: 'form-control' }, placeholder: "City",
+  = f.input :city, input_html: { class: 'form-control', id: "#{kind}_city" }, placeholder: "City",
     label_html: { class: 'control-label input-label' }, label: 'City'
 .form-group
-  = f.input :zip, input_html: { class: 'form-control' }, placeholder: "Zip",
+  = f.input :zip, input_html: { class: 'form-control', id: "#{kind}_zip" }, placeholder: "Zip",
     label_html: { class: 'control-label input-label' }, label: 'Zip'
 .form-group
-  = f.input :country, input_html: { class: 'form-control' }, include_blank: "Country",
+  = f.input :country, input_html: { class: 'form-control', id: "#{kind}_country" }, include_blank: "Country",
     label_html: { class: 'control-label input-label' }, label: 'Select a country'
 .form-group.mb-55
-  = f.input :phone, input_html: { class: 'form-control' }, placeholder: "Example +355 66 123 4567",
+  = f.input :phone, input_html: { class: 'form-control', id: "#{kind}_phone" }, placeholder: "Example +355 66 123 4567",
     label_html: { class: 'control-label input-label' }, label: 'Phone', as: :tel
 .text-center.general-text-align
   = f.button :submit, class: 'btn'

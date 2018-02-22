@@ -15,5 +15,6 @@
 
 //= require jquery
 //= require bootstrap-sprockets
-
+//= require toggle_attr
+//= require user_settings
 //= require_tree .
