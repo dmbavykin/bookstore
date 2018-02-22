@@ -18,8 +18,8 @@ RSpec.describe Order, type: :model do
       end
     end
 
-    it "has one address" do
-      is_expected.to have_my(:address)
+    it "has many addresses" do
+      is_expected.to have_many(:addresses)
     end
   end
 end
