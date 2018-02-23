@@ -1,0 +1,19 @@
+.make-review {
+  textarea {
+    resize: none;
+  }
+
+  .fa-star {
+    color: #c59c71;
+
+    &:hover {
+      color: #333;
+      cursor: pointer;
+    }
+  }
+
+  i.fa-star:hover ~ i.fa-star,
+  i.rate-star ~ i.fa-star {
+    color: #333;
+  }
+}

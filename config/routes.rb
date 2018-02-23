@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :books, only: :show
   resources :users, only: :edit
   resources :addresses
+  resources :reviews
 end

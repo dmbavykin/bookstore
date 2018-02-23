@@ -11,3 +11,8 @@ en:
     failure:
       create: Address does not created
       update: Address does not updated
+  review:
+    successful:
+      create: Thanks for Review. It will be published as soon as Admin will approve it.
+    failure:
+      create: Review does not sended

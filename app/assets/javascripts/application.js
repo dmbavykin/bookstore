@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 
 //= require jquery
 //= require bootstrap-sprockets
 //= require toggle_attr
 //= require user_settings
+//= review
 //= require_tree .
