@@ -12,6 +12,8 @@ class Book < ApplicationRecord
   belongs_to :category
   has_and_belongs_to_many :author
   validates :title, :price, :quantity, presence: true
+  validates_numericality_of :publication_year, less_than_or_equal_to: Time.current.year
+  validates_numericality_of :height, :width, :depth, greater_than: 0
   scope :for_slider, -> { last(3) }
   scope :best_sellers, -> { last(4) }
   scope :newest, -> { order('created_at DESC') }

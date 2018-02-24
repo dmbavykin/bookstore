@@ -7,6 +7,10 @@ class BookDecorator < ApplicationDecorator
   end
 
   def authors
-    object.author.map(&:decorate).map(&:full_name).join(', ').chomp.chop
+    author.map(&:full_name).join(', ')
+  end
+
+  def dimensions
+    ["H: #{height} \"", "W: #{width}\"",  "D: #{depth}\""].join(" x ")
   end
 end

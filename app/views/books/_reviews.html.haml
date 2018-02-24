@@ -1,0 +1,24 @@
+.mb-80
+  %h3.in-gold-500.mb-25
+    Reviews (
+    = @reviews ? @reviews.length : 0
+    )
+  - if @reviews
+    - @reviews.each do |review|
+      .general-message-wrap.divider-lg
+        .clearfix
+          - if review.avatar.blank?
+            %span.img-circle.logo-size.inlide-block.pull-left.logo-empty= review.name.first.upcase
+          - else
+            = image_tag(review.avatar, class: 'img-circle logo-size inlide-block pull-left')
+          .ml-70
+            %div
+              .general-message-date.hidden-xs= review.created_at.to_time.strftime('%d/%m/%y')
+              .max-240
+                - if review.verified
+                  .general-message-verified Verified Reviewer
+                .general-message-name= review.name
+                .mb-15
+                  - review.rating.times do
+                    %i.fa.fa-star.rate-star
+                  %p= review.comment_text
