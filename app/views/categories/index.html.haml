@@ -1,5 +1,5 @@
 %main.container
-  %h1.general-title-margin Сatalog
+  %h1.general-title-margin= t('catalog.all_categories_title')
   = render 'partials/filters'
   .mb-120
     - @books.each_slice(4) do |books|
@@ -7,4 +7,4 @@
         - books.each do |book|
           = render 'partials/book', book: book.decorate, disabled: false
     .text-center
-      = link_to "View More", categories_path(filter: @filter, page: @books.current_page + 1), class: 'btn btn-primary'
+      = link_to t('catalog.view_more_btn'), categories_path(filter: @filter, page: @books.current_page + 1), class: 'btn btn-primary'

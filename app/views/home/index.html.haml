@@ -17,13 +17,13 @@
                   %p.lead= item.description
                 %p.lead.small= item.authors
                 .general-align
-                  %button{class: item.quantity.zero? ? "disabled btn" : 'btn btn-primary'} Buy Now
+                  %button{class: item.quantity.zero? ? "disabled btn" : 'btn btn-primary'}= t('main.slider_buy_btn')
     %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
       %span.icon-prev{'aria-hidden': "true"}
-      %span.sr-only Previous
+      %span.sr-only= t('main.previous_slide')
     %a.right.carousel-control{href: "#slider", role: "button", 'data-slide': "next"}
       %span.icon-next{'aria-hidden': "true"}
-      %span.sr-only Next
+      %span.sr-only= t('main.next_slide')
 .container
   .jumbotron.text-center.mb-0
     %h2.h1= t('main.welcome')

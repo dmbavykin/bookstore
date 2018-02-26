@@ -8,4 +8,4 @@
           = render 'partials/book', book: book.decorate, disabled: false
     .text-center
       - unless @books.last_page?
-        = link_to "View More", category_path(@books.first.category, page: @books.current_page + 1), class: 'btn btn-primary'
+        = link_to t('catalog.view_more_btn'), category_path(@books.first.category, page: @books.current_page + 1), class: 'btn btn-primary'
