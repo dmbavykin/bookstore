@@ -4,6 +4,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
   has_many :addresses, as: :addressable
   has_many :reviews, dependent: :delete_all
+  has_many :orders
 
   def self.new_with_session(params, session)
     super.tap do |user|

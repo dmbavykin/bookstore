@@ -9,6 +9,7 @@ class Book < ApplicationRecord
   }.freeze
   has_many :reviews, dependent: :destroy
   has_many :images, dependent: :destroy
+  has_many :order_items
   belongs_to :category
   has_and_belongs_to_many :author
   validates :title, :price, :quantity, presence: true

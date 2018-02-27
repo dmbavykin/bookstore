@@ -1,7 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :user
-  belongs_to :credit_card
   has_many :addresses, as: :addressable, dependent: :destroy
-  validates :total_price, :completed_date, :state, presence: true
-  enum type: ['Waiting for processing', 'In delivery', 'Delivered', 'Canceled']
+  has_many :order_items
+  enum state: ['Waiting for processing', 'In delivery', 'Delivered', 'Canceled']
 end

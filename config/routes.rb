@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :categories, only: %i[index show]
   resources :books, only: :show
   resources :users, only: :edit
-  resources :addresses
-  resources :reviews
+  resources :addresses, only: %i[create update]
+  resources :reviews, only: :create
+  resources :order
+  resources :order_items
 end

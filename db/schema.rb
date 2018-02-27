@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180223140549) do
+ActiveRecord::Schema.define(version: 20180226131737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 20180223140549) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "number", null: false
+    t.integer "cvv", null: false
+    t.integer "expiration_month", null: false
+    t.integer "expiration_year", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.string "path", null: false
     t.datetime "created_at", null: false
@@ -75,15 +84,22 @@ ActiveRecord::Schema.define(version: 20180223140549) do
     t.index ["book_id"], name: "index_images_on_book_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.decimal "price", precision: 5, scale: 2, null: false
+    t.integer "quantity", null: false
+    t.bigint "book_id"
+    t.bigint "order_id"
+    t.index ["book_id"], name: "index_order_items_on_book_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
   create_table "orders", force: :cascade do |t|
-    t.decimal "total_price", precision: 6, scale: 2, null: false
-    t.date "completed_date", null: false
-    t.string "state", default: "in progress", null: false
-    t.bigint "credit_card_id"
+    t.decimal "total_price", precision: 6, scale: 2
+    t.date "completed_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["credit_card_id"], name: "index_orders_on_credit_card_id"
+    t.integer "state", default: 0, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

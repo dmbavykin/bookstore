@@ -4,7 +4,7 @@ RSpec.describe Review, type: :model do
   let(:review) { FactoryBot.create :review }
 
   context 'validates' do
-    %i[comment_text name state].each do |field|
+    %i[comment_text name].each do |field|
       it "invalid without #{field}" do
         is_expected.to validate_presence_of(field)
       end
