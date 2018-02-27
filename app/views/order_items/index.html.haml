@@ -68,12 +68,14 @@
   .general-order-wrap
     .row
       .col-sm-4
-        .input-group.general-input-group
-          %label.input-label Enter Your Coupon Code
-          %input.form-control.mb-30{type: "text", placeholder: "Enter Your Coupon Code "}
-          %div
-            %button.btn.btn-primary.mr-5.mb-15.visible-xs-inline-block Apply Coupon
-            %button.btn.btn-primary.mb-15.res-block Update cart
+        - unless @order.coupon
+          = simple_form_for(:coupon, url: coupons_path, method: :post) do |f|
+            .input-group.general-input-group
+              = f.input :code, placeholder: 'Enter Your Coupon Code', input_html: { class: 'mb-30' },
+                label_html: { class: 'input-label' }, label: 'Enter Your Coupon Code'
+              %div
+                = f.button :submit, class: 'btn btn-primary mr-5 mb-15', value: 'Apply Coupon'
+        %button.btn.btn-primary.mb-15.res-block Update cart
       .col-sm-8
         .res-mr-200.text-center.general-text-right
           %p.in-gold-500.font-18 Order Summary
@@ -82,16 +84,16 @@
               %td
                 %p.font-16 Subtotal:
               %td
-                %p.font-16= "€#{@items.map(&:subtotal).reduce(&:+)}"
+                %p.font-16= "€#{@order.subtotal}"
             %tr
               %td
                 %p.font-16 Coupon:
               %td
-                %p.font-16 €0.00
+                %p.font-16= "€#{@order.sale}"
             %tr
               %td
                 %strong.font-18 Order Total:
               %td
-                %strong.font-18 €117.69
+                %strong.font-18= "€#{@order.total}"
           %button.btn.btn-default.mb-20.visible-xs-inline-block Checkout
   %button.btn.btn-default.mb-20.hidden-xs.center-block Checkout

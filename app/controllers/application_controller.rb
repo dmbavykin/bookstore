@@ -25,13 +25,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    Order.find_by_id(session[:order_id]) || current_user.orders.where(state: 0).last || new_session_order
+    Order.find_by_id(session[:order_id]) || current_user.orders.in_progress.last || new_session_order
   end
 
   private
 
   def set_order
-    @order = current_order
+    @order = current_order.decorate
   end
 
   def new_session_order
