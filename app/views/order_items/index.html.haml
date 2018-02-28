@@ -68,7 +68,9 @@
   .general-order-wrap
     .row
       .col-sm-4
-        - unless @order.coupon
+        - if @order.coupon
+          = link_to 'Remove Coupon', coupon_path(@order.coupon), class: 'btn btn-primary mr-5 mb-15', method: :delete
+        - else @order.coupon
           = simple_form_for(:coupon, url: coupons_path, method: :post) do |f|
             .input-group.general-input-group
               = f.input :code, placeholder: 'Enter Your Coupon Code', input_html: { class: 'mb-30' },
