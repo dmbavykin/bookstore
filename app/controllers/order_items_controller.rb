@@ -8,7 +8,7 @@ class OrderItemsController < ApplicationController
 
   def create
     return redirect_to order_items_path, alert: 'Book alredy added' if OrderItem.find_by(order: @order)
-    @order.order_items.create(order_items_params)
+    @order.order.order_items.create(order_items_params)
     redirect_to order_items_path, notice: 'Book added successful'
   end
 

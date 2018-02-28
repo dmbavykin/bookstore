@@ -5,6 +5,8 @@ class Ability
     user ||= User.new
 
     can :read, :all
+    can :manage, OrderItem
+    can :manage, Coupon
     if user.admin
       can :manage, :all
     elsif user.confirmed_at

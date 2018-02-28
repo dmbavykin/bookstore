@@ -18,14 +18,14 @@ class ApplicationController < ActionController::Base
 
   def guest_user
     return User.find(session[:guest_user_id]) if session[:guest_user_id]
-    user_guest = User.new(:email => "guest_#{Time.now.to_i}#{rand(100)}@guest.com")
-    user_guest.save!(:validate => false)
+    user_guest = User.new(email: "guest_#{Time.now.to_i}#{rand(100)}@guest.com")
+    user_guest.save!(validate: false)
     session[:guest_user_id] = user_guest.id
     user_guest
   end
 
   def current_order
-    Order.find_by_id(session[:order_id]) || current_user.orders.in_progress.last || new_session_order
+    Order.find_by_id(session[:order_id]) || current_user&.orders&.in_progress&.last || new_session_order
   end
 
   private
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def new_session_order
-    order = Order.create(user: current_user)
+    order = Order.create
     session[:order_id] = order.id
     order
   end
