@@ -7,9 +7,16 @@ class OrderItemsController < ApplicationController
   end
 
   def create
-    return redirect_to order_items_path, alert: 'Book alredy added' if OrderItem.find_by(order: @order)
+    if @order.order_items.object.where(book_id: order_items_params[:book_id]).any?
+      return redirect_to order_items_path, alert: 'Book alredy added'
+    end
     @order.order.order_items.create(order_items_params)
     redirect_to order_items_path, notice: 'Book added successful'
+  end
+
+  def update
+    params[:increment] ? @order_item.increment!(:quantity) : @order_item.decrement!(:quantity)
+    redirect_to order_items_path
   end
 
   def destroy
@@ -20,6 +27,6 @@ class OrderItemsController < ApplicationController
   private
 
   def order_items_params
-    params.permit(:price, :quantity, :book_id)
+    params.require(:order_items).permit(:price, :quantity, :book_id)
   end
 end

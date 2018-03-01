@@ -6,6 +6,10 @@ class BookDecorator < ApplicationDecorator
     index.zero? ? 'item active' : 'item'
   end
 
+  def class_for_slide_btn
+    quantity.zero? ? "disabled btn" : 'btn btn-primary'
+  end
+
   def authors
     author.map(&:full_name).join(', ')
   end

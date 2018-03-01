@@ -55,11 +55,13 @@
             %span.font-16.in-gold-500= "€#{item.book.price}"
           %td
             .input-group
-              %a.input-link{href: "#"}
-                %i.fa.fa-minus.line-heaght-40
+              - if item.quantity > 1
+                = link_to order_item_path(item), method: :put, class: 'input-link' do
+                  %i.fa.fa-minus.line-heaght-40
               %input.form-control.quantity-input{type: "text", value: item.quantity}
-              %a.input-link{href: "#"}
-                %i.fa.fa-plus.line-heaght-40
+              - if item.quantity < item.book.quantity
+                = link_to order_item_path(item, increment: true), method: :put, class: 'input-link' do
+                  %i.fa.fa-plus.line-heaght-40
           %td
             %span.font-16.in-gold-500= "€#{item.subtotal}"
           %td

@@ -20,15 +20,18 @@
           %p.h1.in-gold-500.mt-10
             €
             = @book.price.to_f
-        .col-xs-5.col-md-3
-          .input-group.general-position
-            %a.input-link{href: "#"}
-              %i.fa.fa-minus.line-height-40
-            %input.form-control.quantity-input{type: "text"}
-            %a.input-link{href: "#"}
-              %i.fa.fa-plus.line-height-40
-        .col-xs-7.col-md-5
-          %button.btn.btn-default.pull-right.general-position Add to Cart
+        = simple_form_for :order_items, url: order_items_path, method: :post do |f|
+          .col-xs-5.col-md-3
+            .input-group.general-position
+              %a#decrement-book-quantity.input-link{href: "#"}
+                %i.fa.fa-minus.line-height-40
+              = f.input :quantity, input_html: { class: 'quantity-input', value: 1 }, label: false, wrapper: false, as: :string
+              %a#increment-book-quantity.input-link{href: "#"}
+                %i.fa.fa-plus.line-height-40
+              = f.hidden_field :book_id, value: @book.id
+              = f.hidden_field :price, value: @book.price
+          .col-xs-7.col-md-5
+            = f.button :submit, value: 'Add to Cart', class: 'pull-right general-position'
       - unless @book.description.blank?
         .general-info-wrap.divider-lg
           %p Description

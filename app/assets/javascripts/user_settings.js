@@ -1,4 +1,4 @@
-$(() => {
+$(document).on("turbolinks:load", () => {
   $('#delete_account_form .checkbox-input').on('click', () => {
     $('#delete_account_btn').toggleClass('disabled').toggleAttr('disabled');
   });

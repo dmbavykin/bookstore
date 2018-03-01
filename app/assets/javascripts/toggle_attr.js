@@ -1,4 +1,4 @@
-$(() => {
+$(document).on("turbolinks:load", () => {
   jQuery.fn.toggleAttr = function(attr) {
    return this.each(() => {
     let $this = $(this);
