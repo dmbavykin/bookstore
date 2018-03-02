@@ -4,9 +4,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     resource.save
-    @order.update(user: resource) if @order
     yield resource if block_given?
     return handle_unsaved_resource unless resource.persisted?
+    @order.update(user: resource) if @order
     resource.active_for_authentication? ? successful_response : unsuccessful_response
   end
 
