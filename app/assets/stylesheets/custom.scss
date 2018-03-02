@@ -17,3 +17,31 @@
     color: #333;
   }
 }
+
+.pagination {
+  .active {
+    a {
+      color: #fff;
+      background-color: #c59c71;
+      border-color: transparent;
+
+      &:hover {
+        color: #fff;
+        background-color: #b6834d;
+        border-color: rgba(0, 0, 0, 0);
+      }
+    }
+  }
+
+  li {
+    a {
+      color: #c59c71;
+
+      &:hover {
+        color: #fff;
+        background-color: #b6834d;
+        border-color: rgba(0, 0, 0, 0);
+      }
+    }
+  }
+}
