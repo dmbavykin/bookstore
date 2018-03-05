@@ -7,6 +7,6 @@ class ChangingReferencesBetweenBooksAndAuthors < ActiveRecord::Migration[5.1]
       t.references :author, index: true
     end
 
-    add_index :authors_books, [:book_id, :author_id]
+    add_index :authors_books, %i[book_id author_id]
   end
 end

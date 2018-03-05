@@ -9,7 +9,6 @@
             label_html: { class: 'input-label' }, label: 'Your review', as: :text
           = f.hidden_field :rating, value: 10
           = f.hidden_field :book_id, value: @book.id
-          = f.hidden_field :user_id, value: current_user.id
           = f.hidden_field :avatar, value: current_user.image
           .mb-15.review-rating
             - 10.times do |time|

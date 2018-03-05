@@ -9,7 +9,7 @@
           .row
             .col-sm-5
               .general-img-wrap
-                = cl_image_tag(book_main_image(item), class: 'img-shadow general-thumbnail-img')
+                = cl_image_tag(item.main_image, class: 'img-shadow general-thumbnail-img')
             .col-sm-7
               .mb-60
                 %h1= item.title

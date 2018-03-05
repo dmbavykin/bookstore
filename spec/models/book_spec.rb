@@ -12,14 +12,12 @@ RSpec.describe Book, type: :model do
   end
 
   context 'check relations' do
-
-    it "belongs to category" do
+    it 'belongs to category' do
       is_expected.to belong_to(:category)
     end
 
-    it "has and belongs to many to author" do
+    it 'has and belongs to many to author' do
       is_expected.to have_and_belong_to_many(:author)
     end
-
   end
 end

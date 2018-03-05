@@ -5,5 +5,5 @@ class Order < ApplicationRecord
   has_one :coupon
   validates_presence_of :state
   enum state: ['Waiting for processing', 'In delivery', 'Delivered', 'Canceled']
-  scope :in_progress, -> { where(state: 0) }
+  scope :in_progress, -> { where(state: states['Waiting for processing']) }
 end
