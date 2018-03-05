@@ -38,6 +38,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   gem 'ffaker', '~> 2.8', '>= 2.8.1'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.2'
 end
 
 group :development do

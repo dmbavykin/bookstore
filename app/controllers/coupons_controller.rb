@@ -1,15 +1,15 @@
 class CouponsController < ApplicationController
   def create
     coupon = Coupon.find_by(code: coupon_params[:code])
-    return redirect_to order_items_path, alert: 'Coupon does not exist' unless coupon
-    return redirect_to order_items_path, alert: 'Coupon alredy used' if coupon.order
+    return redirect_to order_items_path, alert: t('coupon.not_exist') unless coupon
+    return redirect_to order_items_path, alert: t('coupon.used') if coupon.order
     @order.update(coupon: coupon)
-    redirect_to order_items_path, notice: 'Coupon added'
+    redirect_to order_items_path, notice: t('coupon.added')
   end
 
   def destroy
     Coupon.find(params[:id]).update(order_id: nil)
-    redirect_to order_items_path, notice: 'Coupon removed'
+    redirect_to order_items_path, notice: t('coupon.removed')
   end
 
   private

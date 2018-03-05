@@ -7,6 +7,17 @@ FactoryBot.define do
     zip { FFaker::AddressUS.zip_code }
     country { FFaker::AddressUS.country }
     phone { FFaker::PhoneNumberFR.international_phone_number }
-    kind { rand(0...Address.kinds) }
+
+    trait :shipping do
+      kind :shipping
+    end
+
+    trait :billing do
+      kind :billing
+    end
+
+    trait :invalid do
+      zip nil
+    end
   end
 end

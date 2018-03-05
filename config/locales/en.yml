@@ -52,3 +52,8 @@ en:
       create: Thanks for Review. It will be published as soon as Admin will approve it.
     failure:
       create: Review does not sended
+  coupon:
+    not_exist: Coupon does not exist
+    used: Coupon alredy used
+    added: Coupon added
+    removed: Coupon removed

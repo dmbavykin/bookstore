@@ -8,7 +8,7 @@ FactoryBot.define do
     height { rand(1..100) }
     depth { rand(1..100) }
     material { 'Paper' }
-    author
+    publication_year { Time.now.year }
     category
   end
 end

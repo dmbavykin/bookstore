@@ -4,10 +4,8 @@ RSpec.describe Order, type: :model do
   let(:order) { FactoryBot.create :order }
 
   context 'validates' do
-    %i[total_price completed_date state].each do |field|
-      it "invalid without #{field}" do
-        is_expected.to validate_presence_of(field)
-      end
+    it "invalid without state" do
+      is_expected.to validate_presence_of(:state)
     end
   end
 
