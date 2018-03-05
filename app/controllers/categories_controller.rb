@@ -12,6 +12,6 @@ class CategoriesController < ApplicationController
   private
 
   def set_filter
-    @filter = params[:filter] || :newest
+    @filter = Book::FILTERS.key?(params[:filter_id]) ? params[:filter] : Book::DEFAULT_FILTER
   end
 end

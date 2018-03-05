@@ -3,7 +3,7 @@ class OrderDecorator < ApplicationDecorator
   decorates_association :order_items
 
   def sale
-     coupon ? coupon.sale : 0.0
+    coupon ? coupon.sale : 0.0
   end
 
   def subtotal

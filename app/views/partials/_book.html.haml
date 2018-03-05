@@ -1,7 +1,7 @@
 .col-xs-6.col-sm-3
   .general-thumb-wrap
-    %div{class: "thumbnail general-thumbnail" << (disabled ? ' disabled' : '') }
-      = cl_image_tag(book_main_image(book), class: 'img-shadow general-thumbnail-img')
+    %div{class: book.wrapper_class(disabled)}
+      = cl_image_tag(book.main_image, class: 'img-shadow general-thumbnail-img')
       .thumb-hover
         .general-thumb-link-wrap
           = link_to book_path(book.id), class: 'thumb-hover-link' do

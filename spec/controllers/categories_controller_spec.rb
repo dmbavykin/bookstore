@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
-  let(:book) { FactoryBot.create(:book)}
+  let(:book) { FactoryBot.create(:book) }
 
   describe 'GET #index' do
     before { get :index }

@@ -7,7 +7,7 @@
           %span{'aria-hidden': "true"} &times;
         .general-img-wrap-table
           = link_to(book_path(item.book)) do
-            = cl_image_tag(book_main_image(item.book), class: 'cart-img-shadow')
+            = cl_image_tag(item.book.main_image, class: 'cart-img-shadow')
         %p.title= link_to(item.book.title, book_path(item.book))
         %table.table
           %tr
@@ -48,7 +48,7 @@
           %td
             .general-img-wrap-table
               = link_to(book_path(item.book)) do
-                = cl_image_tag(book_main_image(item.book), class: 'cart-img-shadow pull-left')
+                = cl_image_tag(item.book.main_image, class: 'cart-img-shadow pull-left')
           %td
             %p.title= link_to(item.book.title, book_path(item.book))
           %td

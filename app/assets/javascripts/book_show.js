@@ -1,8 +1,8 @@
-$(document).on("turbolinks:load", () => {
-  const input = $('#order_items_quantity');
-  let val = input.val();
+$(document).on("turbolinks:load", function() {
+  var input = $('#order_items_quantity');
+  var val = input.val();
 
-  $('#decrement-book-quantity').on('click', (event) => {
+  $('#decrement-book-quantity').on('click', function(event) {
     event.preventDefault();
     if (input.val() > 1) {
       val = +val - 1
@@ -11,7 +11,7 @@ $(document).on("turbolinks:load", () => {
     }
   });
 
-  $('#increment-book-quantity').on('click', (event) => {
+  $('#increment-book-quantity').on('click', function(event) {
     event.preventDefault();
     val = +val + 1
     input.val(val);

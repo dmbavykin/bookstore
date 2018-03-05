@@ -4,7 +4,7 @@ RSpec.describe Order, type: :model do
   let(:order) { FactoryBot.create :order }
 
   context 'validates' do
-    it "invalid without state" do
+    it 'invalid without state' do
       is_expected.to validate_presence_of(:state)
     end
   end
@@ -16,7 +16,7 @@ RSpec.describe Order, type: :model do
       end
     end
 
-    it "has many addresses" do
+    it 'has many addresses' do
       is_expected.to have_many(:addresses)
     end
   end

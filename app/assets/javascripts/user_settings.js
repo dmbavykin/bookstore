@@ -1,10 +1,10 @@
-$(document).on("turbolinks:load", () => {
-  $('#delete_account_form .checkbox-input').on('click', () => {
+$(document).on("turbolinks:load", function() {
+  $('#delete_account_form .checkbox-input').on('click', function() {
     $('#delete_account_btn').toggleClass('disabled').toggleAttr('disabled');
   });
-  $('#change_password_form .form-control').each(() => {
-    $(this).on('keyup', () => {
-      let state = $("#change_password_form .form-control").filter(function () {
+  $('#change_password_form .form-control').each(function() {
+    $(this).on('keyup', function() {
+      var state = $("#change_password_form .form-control").filter(function () {
         return $.trim($(this).val()).length == 0
       }).length == 0;
 

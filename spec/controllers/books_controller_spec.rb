@@ -6,7 +6,6 @@ RSpec.describe BooksController, type: :controller do
 
   describe 'GET #show' do
     context 'assigns' do
-
       %i[book review reviews].each do |variable|
         it "assigns #{variable}" do
           allow(controller).to receive(:current_user).and_return user
@@ -20,7 +19,6 @@ RSpec.describe BooksController, type: :controller do
         get :show, params: { id: book.id }
         expect(assigns(:review)).to be_nil
       end
-
     end
 
     describe 'successful rendering' do
