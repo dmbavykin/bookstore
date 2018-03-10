@@ -6,12 +6,11 @@ RSpec.describe BooksController, type: :controller do
 
   describe 'GET #show' do
     context 'assigns' do
-      %i[book review reviews].each do |variable|
-        it "assigns #{variable}" do
-          allow(controller).to receive(:current_user).and_return user
-          get :show, params: { id: book.id }
-          expect(assigns(variable)).not_to be_nil
-        end
+      it "assigns variables" do
+        allow(controller).to receive(:current_user).and_return user
+        get :show, params: { id: book.id }
+        expect(assigns(:book)).not_to be_nil
+        expect(assigns(:reviews)).not_to be_nil
       end
 
       it 'does not assign @review' do

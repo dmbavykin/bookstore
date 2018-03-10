@@ -1,8 +1,6 @@
 .mb-80
   %h3.in-gold-500.mb-25
-    Reviews (
-    = @reviews ? @reviews.length : 0
-    )
+    = @book.reviews_count
   - if @reviews
     - @reviews.each do |review|
       .general-message-wrap.divider-lg

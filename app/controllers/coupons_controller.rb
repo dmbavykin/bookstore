@@ -1,4 +1,5 @@
 class CouponsController < ApplicationController
+
   def create
     coupon = Coupon.find_by(code: coupon_params[:code])
     return redirect_to order_items_path, alert: t('coupon.not_exist') unless coupon

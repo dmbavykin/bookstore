@@ -1,6 +1,5 @@
 class BookDecorator < ApplicationDecorator
   delegate_all
-  decorates_association :author
 
   def class_for_slide(index)
     index.zero? ? 'item active' : 'item'
@@ -10,8 +9,8 @@ class BookDecorator < ApplicationDecorator
     quantity.zero? ? 'disabled btn' : 'btn btn-primary'
   end
 
-  def authors
-    author.map(&:full_name).join(', ')
+  def authors_names
+    authors.map{ |author| author.decorate.full_name }.join(', ')
   end
 
   def dimensions
@@ -24,5 +23,9 @@ class BookDecorator < ApplicationDecorator
 
   def wrapper_class(disabled)
     'thumbnail general-thumbnail' << (disabled ? ' disabled' : '')
+  end
+
+  def reviews_count
+    "Reviews (#{reviews ? reviews.confirmed.count : 0})"
   end
 end

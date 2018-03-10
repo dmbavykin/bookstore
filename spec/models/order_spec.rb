@@ -16,8 +16,14 @@ RSpec.describe Order, type: :model do
       end
     end
 
-    it 'has many addresses' do
-      is_expected.to have_many(:addresses)
+    %i[addresses order_items].each do |field|
+      it "has many #{field}" do
+        is_expected.to have_many(field)
+      end
+    end
+
+    it "has one coupon" do
+      is_expected.to have_one(:coupon)
     end
   end
 end

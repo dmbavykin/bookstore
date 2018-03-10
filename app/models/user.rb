@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :addresses, as: :addressable
   has_many :reviews, dependent: :delete_all
   has_many :orders
+  has_many :credit_cards
 
   def self.new_with_session(params, session)
     super.tap do |user|

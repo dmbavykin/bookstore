@@ -3,7 +3,6 @@ class BooksController < ApplicationController
 
   def show
     @book = @book.decorate
-    @reviews = Review.where(book: @book).confirmed
-    @review = Review.new if current_user
+    @reviews = @book.reviews.confirmed
   end
 end

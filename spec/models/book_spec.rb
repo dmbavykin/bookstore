@@ -17,7 +17,7 @@ RSpec.describe Book, type: :model do
     end
 
     it 'has and belongs to many to author' do
-      is_expected.to have_and_belong_to_many(:author)
+      is_expected.to have_and_belong_to_many(:authors)
     end
   end
 end

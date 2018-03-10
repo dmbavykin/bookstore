@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :user, optional: true
+  belongs_to :credit_card, optional: true
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :order_items
   has_one :coupon

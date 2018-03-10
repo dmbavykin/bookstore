@@ -57,3 +57,10 @@ en:
     used: Coupon alredy used
     added: Coupon added
     removed: Coupon removed
+  cart:
+    no_more: 'You can`t add more books'
+    no_less: 'You can`t buy less then one book'
+    successful_added: Book added successful
+    alredy_added: Book alredy added
+    empty: You`ve not any books in cart
+    removed_successful: Book successful removed from cart

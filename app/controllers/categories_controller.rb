@@ -1,12 +1,13 @@
 class CategoriesController < ApplicationController
   load_resource
   before_action :set_filter
+
   def index
-    @books = Book.public_send(@filter).page(params[:page])
+    @books = Book.by_filter(@filter, params[:page])
   end
 
   def show
-    @books = Book.where(category_id: @category).public_send(@filter).page(params[:page])
+    @books = Book.where(category_id: @category).by_filter(@filter, params[:page])
   end
 
   private

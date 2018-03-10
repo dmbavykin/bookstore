@@ -15,7 +15,7 @@
                 %h1= item.title
                 - unless item.description.empty?
                   %p.lead= item.description
-                %p.lead.small= item.authors
+                %p.lead.small= item.authors_names
                 .general-align
                   = link_to order_items_path(order_items: {price: item.price, quantity: 1, book_id: item.id}), method: :post do
                     %button{class: item.class_for_slide_btn, disabled: item.quantity.zero? }= t('main.slider_buy_btn')

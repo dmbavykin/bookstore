@@ -1,8 +1,10 @@
 class ReviewsController < ApplicationController
+  load_resource :book
+
   def create
-    @review = current_user.reviews.create(review_params)
+    @review = current_user.reviews.create(review_params.merge(book: @book))
     @review.errors.any? ? flash[:alert] = t('review.failure.create') : flash[:notice] = t('review.successful.create')
-    redirect_to book_path(review_params[:book_id])
+    redirect_to @book
   end
 
   private

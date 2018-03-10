@@ -9,10 +9,10 @@
       %a.navbar-brand= t('navigation.brand')
       = link_to order_items_path, class: 'shop-link pull-right visible-xs' do
         %span.shop-icon
-          %span.shop-quantity= @order.order_items.length
+          %span.shop-quantity= book_in_cart
     = link_to order_items_path, class: 'shop-link pull-right hidden-xs' do
       %span.shop-icon
-        %span.shop-quantity= @order.order_items.length
+        %span.shop-quantity= book_in_cart
     #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
       .visible-xs
         %button.close{type: "button", 'aria-label': "Close"}
