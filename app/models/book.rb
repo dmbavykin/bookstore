@@ -21,6 +21,7 @@ class Book < ApplicationRecord
   scope :for_slider, -> { order(:created_at).last(3) }
   scope :best_sellers, -> { order(:created_at).last(4) }
   scope :newest, -> { order('created_at DESC') }
+  scope :popular, -> { order('created_at DESC') }
   scope :price_asc, -> { order('price') }
   scope :price_desc, -> { order('price DESC') }
   scope :by_title_asc, -> { order('title') }

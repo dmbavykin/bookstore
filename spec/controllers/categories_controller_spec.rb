@@ -14,7 +14,7 @@ RSpec.describe CategoriesController, type: :controller do
     end
 
     it 'renders :index template' do
-      expect(response).to render_template(:index)
+      expect(response).to render_template(:show)
     end
   end
 

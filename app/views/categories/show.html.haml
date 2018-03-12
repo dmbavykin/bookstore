@@ -1,6 +1,6 @@
 %main.container
-  %h1.general-title-margin= @category.title
-  = render 'partials/filters_show'
+  %h1.general-title-margin= @category ? @category.title : t('catalog.all_categories_title')
+  = render 'partials/filters'
   .mb-120
     - @books.each_slice(4) do |books|
       .row.mb-25

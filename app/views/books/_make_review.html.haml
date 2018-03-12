@@ -1,7 +1,7 @@
 .mb-20.make-review
   .row
     .col-md-5.col-xs-10
-      - if can? :create, @review
+      - if can? :create, Review
         = simple_form_for :review, url: book_reviews_path(@book.id), validate: true do |f|
           = f.input :name, placeholder: 'John Doe', input_html: { value: current_user.name },
             label_html: { class: 'input-label' }, label: 'Your name'

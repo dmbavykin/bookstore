@@ -20,7 +20,6 @@ en:
   catalog:
     all_categories_title: Catalog
     all_categories: All
-    view_more_btn: View More
     for_mobile:
       filter_by_category: Filter by category
       sort_by: Sort by

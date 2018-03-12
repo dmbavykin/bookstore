@@ -18,7 +18,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def update_previous_order(previous_order)
-    @order.order_items.object.each do |order_item|
+    @order.order_items.each do |order_item|
       order_item.update(order_id: previous_order.id) unless previous_order.order_items.where(book_id: order_item.book_id).any?
     end
     @order.destroy

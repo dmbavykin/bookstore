@@ -39,6 +39,7 @@ group :development, :test do
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.2'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
+  gem 'capybara', '~> 2.18'
 end
 
 group :development do

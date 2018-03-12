@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
 
   def index
     @books = Book.by_filter(@filter, params[:page])
+    render :show
   end
 
   def show
@@ -13,6 +14,6 @@ class CategoriesController < ApplicationController
   private
 
   def set_filter
-    @filter = Book::FILTERS.key?(params[:filter_id]) ? params[:filter] : Book::DEFAULT_FILTER
+    @filter = Book::FILTERS.key?(params[:filter]&.to_sym) ? params[:filter] : Book::DEFAULT_FILTER
   end
 end
