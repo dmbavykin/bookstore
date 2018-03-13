@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users, only: :edit
   resources :addresses, only: %i[create update]
   resources :order
+  resources :order_steps
   resources :order_items, except: %i[new edit show]
   resources :coupons, only: %i[create destroy]
 end

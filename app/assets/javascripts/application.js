@@ -17,5 +17,6 @@
 //= require toggle_attr
 //= require user_settings
 //= require book_show
+//= require order_address
 //= review
 //= require_tree .

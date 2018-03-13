@@ -30,6 +30,8 @@ gem 'simple_form', '~> 3.5', '>= 3.5.1'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'uglifier', '>= 1.3.0'
+gem 'aasm', '~> 4.12', '>= 4.12.3'
+gem 'wicked', '~> 1.3', '>= 1.3.2'
 
 group :development, :test do
   gem 'database_cleaner', '~> 1.6', '>= 1.6.2'

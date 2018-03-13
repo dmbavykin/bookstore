@@ -12,14 +12,14 @@
           .col-md-5
             %h3.general-subtitle.mt-0 Billing Address
           .col-md-5.col-md-offset-1
-            %h3.general-subtitle.mt-0 Shipping Address
+            %h3.general-subtitle.mt-0 Shipping Address1
       .row
         - Address.kinds.each_key do |kind|
           = simple_form_for(current_user.addresses.find_or_initialize_by(kind: Address.kinds[kind]), html: { id: "#{kind}_form" }) do |f|
             .col-md-5.mb-40
               .visible-xs.visible-sm
                 %h3.general-subtitle.mt-0= "#{kind.capitalize} Address"
-              = render 'partials/address_form', f: f, kind: kind
+              = render 'partials/address_form', f: f, kind: kind, with_submit_btn: true
     #privacy.tab-pane.fade{role: "tabpanel"}
       .row.mb-60
         .col-sm-5

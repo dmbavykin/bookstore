@@ -20,5 +20,6 @@
 .form-group.mb-55
   = f.input :phone, input_html: { class: 'form-control', id: "#{kind}_phone" }, label: t('address.inputs_labels.phone'),
   placeholder: t('address.inputs_placeholders.phone'), label_html: { class: 'control-label input-label' }, as: :tel
-.text-center.general-text-align
-  = f.button :submit, class: 'btn'
+- if with_submit_btn
+  .text-center.general-text-align
+    = f.button :submit, class: 'btn'
