@@ -27,12 +27,14 @@ class OrderStepsController < ApplicationController
   end
 
   def redirect_to_step(step)
-    redirect_to wizard_path(next_step)
+    redirect_to wizard_path(step)
   end
 
   def order_params
     params.permit(
       :use_billing,
+      :delivery,
+      credit_card: %i[number cvv card_name expiration_date],
       billing_address:  %i[first_name last_name address city zip country phone kind],
       shipping_address: %i[first_name last_name address city zip country phone kind]
     )

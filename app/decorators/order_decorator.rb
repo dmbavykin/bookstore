@@ -11,6 +11,10 @@ class OrderDecorator < ApplicationDecorator
   end
 
   def total
-    subtotal - sale 
+    subtotal - sale
+  end
+
+  def total_with_delivery
+    total + delivery.price
   end
 end

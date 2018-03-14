@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313141017) do
+ActiveRecord::Schema.define(version: 20180314124407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,12 +77,19 @@ ActiveRecord::Schema.define(version: 20180313141017) do
   create_table "credit_cards", force: :cascade do |t|
     t.string "number", null: false
     t.integer "cvv", null: false
-    t.integer "expiration_month", null: false
-    t.integer "expiration_year", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
     t.bigint "user_id"
+    t.string "card_name", null: false
+    t.string "expiration_date", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
+  create_table "deliveries", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "days", null: false
+    t.decimal "price", precision: 5, scale: 2, null: false
+    t.boolean "active", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade do |t|
@@ -111,7 +118,9 @@ ActiveRecord::Schema.define(version: 20180313141017) do
     t.integer "state", default: 0, null: false
     t.bigint "credit_card_id"
     t.boolean "use_billing", default: false
+    t.bigint "delivery_id"
     t.index ["credit_card_id"], name: "index_orders_on_credit_card_id"
+    t.index ["delivery_id"], name: "index_orders_on_delivery_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
