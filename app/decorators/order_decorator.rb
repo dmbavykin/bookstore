@@ -11,7 +11,8 @@ class OrderDecorator < ApplicationDecorator
   end
 
   def total
-    subtotal - sale
+    total_price = subtotal - sale
+    total_price.positive? ? total_price : 0.0
   end
 
   def total_with_delivery

@@ -3,31 +3,33 @@
   %h3.general-subtitle Delivery
   .visible-xs
     .general-cart-item.divider-lg-bottom.mb-30.table-responsive
-      %table.table
-        %tr
-          %td.col-half
-            %span.in-grey-600 Method
-          - @form.deliveries.each do |delivery|
+      = form_tag(wizard_path, method: :put) do
+        %table.table
+          %tr
             %td.col-half
-              .form-group.radio.mt-0.mb-0
-                %label.radio-label
-                  %input.radio-input{type: "radio", hidden: "true"}
-                  %span.radio-icon
-                  %span.radio-text= delivery.title
-        %tr
-          %td
-            %span.in-grey-600 Days
-          - @form.deliveries.each do |delivery|
-            %td.text-center
-              %span.font-16.fw-300= delivery.days
-        %tr
-          %td
-            %span.in-grey-600 Price
-          - @form.deliveries.each do |delivery|
-            %td.text-center
-              %span.font-16.in-gold-500="€#{delivery.price}"
+              %span.in-grey-600 Method
+            - @form.deliveries.each do |delivery|
+              %td.col-half
+                .form-group.radio.mt-0.mb-0
+                  %label.radio-label
+                    = radio_button_tag(:delivery, delivery.id, @order.delivery&.id == delivery.id, class: 'radio-input', hidden: "true", require: 'true' )
+                    %span.radio-icon
+                    %span.radio-text= delivery.title
+          %tr
+            %td
+              %span.in-grey-600 Days
+            - @form.deliveries.each do |delivery|
+              %td.text-center
+                %span.font-16.fw-300= delivery.days
+          %tr
+            %td
+              %span.in-grey-600 Price
+            - @form.deliveries.each do |delivery|
+              %td.text-center
+                %span.font-16.in-gold-500="€#{delivery.price}"
+        = submit_tag('Save and Continue', class: 'btn btn-default mb-20')
   .hidden-xs.mb-res-50
-    = form_tag(wizard_path, method: :put) do |f|
+    = form_tag(wizard_path, method: :put) do
       %table.table.table-hover
         %thead
           %tr
@@ -62,11 +64,11 @@
             %td
               %p.font-16 Coupon:
             %td
-              %p.font-16 €0.00
+              %p.font-16= "€#{@order.sale}"
           %tr
             %td
               %strong.font-18 Order Total:
             %td
-              %strong.font-18 €117.69
+              %strong.font-18= "€#{@order.total}"
       .text-center
         = submit_tag('Save and Continue', class: 'btn btn-default mb-20')

@@ -22,7 +22,7 @@ class OrderStepsForm
     case false
     when @billing_address.valid? && @shipping_address.valid? then :address
     when !@order.delivery.nil? then :delivery
-    when !@order.credit_card.nil? then :payment
+    when @credit_card.valid? then :payment
     else :confirm
     end
   end
@@ -61,10 +61,11 @@ class OrderStepsForm
 
   def update_payment(params)
     @credit_card.update(params[:credit_card])
-    @order.update(credit_card_id: credit_card) if @credit_card.errors.empty?
+    @order.update(credit_card_id: credit_card.id) if @credit_card.errors.empty?
   end
 
   def set_card
+    # binding.pry
     @order.credit_card || @order.user.credit_cards.last || CreditCard.new(user: @order.user)
   end
 end

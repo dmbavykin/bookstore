@@ -4,6 +4,8 @@ class OrderStepsController < ApplicationController
   before_action :check_order, :relate_with_user, :set_form
 
   def show
+    needful_step = @form.get_step
+    redirect_to_step(needful_step) and return if wrong_step?(needful_step)
     render_wizard
   end
 
@@ -26,8 +28,16 @@ class OrderStepsController < ApplicationController
     @form = OrderStepsForm.new(@order)
   end
 
-  def redirect_to_step(step)
-    redirect_to wizard_path(step)
+  def redirect_to_step(needful_step)
+    redirect_to wizard_path(needful_step)
+  end
+
+  def wrong_step?(needful_step)
+    (step != needful_step) && step_index(step) > step_index(needful_step)
+  end
+
+  def step_index(_step)
+    wizard_steps.index(_step)
   end
 
   def order_params
