@@ -1,5 +1,5 @@
 class CreditCard < ApplicationRecord
-  has_many :orders
+  has_many :orders, dependent: :nullify
   belongs_to :user
   validates_presence_of :number, :cvv, :expiration_date, :card_name
   validates :number, format: { with: /\A\d{16}\z/ }

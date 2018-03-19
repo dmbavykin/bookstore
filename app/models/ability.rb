@@ -11,6 +11,9 @@ class Ability
       can :manage, :all
     elsif user.confirmed_at
       can :create, Review
+      can :manage, Order
+      can :create, :update, Address
+      can :create, :update, CreditCard
     end
   end
 end

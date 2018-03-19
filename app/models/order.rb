@@ -4,10 +4,43 @@ class Order < ApplicationRecord
   belongs_to :credit_card, optional: true
   belongs_to :delivery, optional: true
   has_many :addresses, as: :addressable, dependent: :destroy
-  has_many :order_items
-  has_one :coupon
+  has_many :order_items, dependent: :destroy
+  has_one :coupon, dependent: :nullify
   validates_presence_of :state
-  enum state: ['Waiting for processing', 'In delivery', 'Delivered', 'Canceled']
-  scope :in_progress, -> { where(state: states['Waiting for processing']) }
+  scope :in_progress, -> { where(state: 'filling') }
   accepts_nested_attributes_for :addresses
+
+  aasm column: :state do
+    state :filling, initial: true
+    state :in_confirmation, after_enter: :send_confirmation
+    state :in_processing
+    state :in_delivery
+    state :completed
+    state :canceled
+
+    event :confirm do
+      transitions from: :filling, to: :in_confirmation
+    end
+
+    event :process do
+      transitions from: :in_confirmation, to: :in_processing
+    end
+
+    event :deliver do
+      transitions from: :in_processing, to: :in_delivery
+    end
+
+    event :complete do
+      transitions from: :in_delivery, to: :completed
+    end
+
+    event :cancel do
+      transitions from: %i(filling in_confirmation in_processing in_delivery completed), to: :canceled
+    end
+  end
+
+  def send_confirmation
+    OrderMailer.confirm_order(user, self).deliver_now
+  end
+
 end

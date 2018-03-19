@@ -17,7 +17,7 @@
             = render 'partials/address_form', f: shipping, kind: :shipping, with_submit_btn: false
         .form-group.checkbox
           %label.checkbox-label
-            = check_box_tag :use_billing, @order.use_billing, @order.use_billing, hidden: true, class: 'checkbox-input', checked: @order.use_billing
+            = check_box_tag :use_billing, true, @order.use_billing, hidden: true, class: 'checkbox-input'
             %span.checkbox-icon
               %i.fa.fa-check
             %span.checkbox-text Use Billing Adress

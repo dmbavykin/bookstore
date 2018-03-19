@@ -3,9 +3,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
          :omniauthable, omniauth_providers: [:facebook]
   has_many :addresses, as: :addressable
-  has_many :reviews, dependent: :delete_all
-  has_many :orders
-  has_many :credit_cards
+  has_many :reviews, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :credit_cards, dependent: :nullify
 
   def self.new_with_session(params, session)
     super.tap do |user|

@@ -15,6 +15,7 @@ class OrderStepsForm
     when :address then update_addresses(params)
     when :delivery then update_delivery(params)
     when :payment then update_payment(params)
+    when :confirm then confirm_order
     end
   end
 
@@ -23,7 +24,8 @@ class OrderStepsForm
     when @billing_address.valid? && @shipping_address.valid? then :address
     when !@order.delivery.nil? then :delivery
     when @credit_card.valid? then :payment
-    else :confirm
+    when !@order.filling? then :confirm
+    else :complete
     end
   end
 
@@ -32,18 +34,18 @@ class OrderStepsForm
   def address(kind)
     return @order.addresses.find_by(kind: kind) if @order.addresses.find_by(kind: kind)
     user_address = @order.user.addresses.find_by(kind: kind)
-    user_address ? user_address.dup : @order.addresses.build(kind: kind)
+    user_address ? user_address.dup : @order.addresses.new(kind: kind)
   end
 
   def update_addresses(params)
-    @order.update(use_billing: params[:use_billing])
+    @order.update(use_billing: params[:use_billing] || false)
     @billing_address = update_address(:billing, params[:billing_address])
     update_shipping_address(params)
     @billing_address.errors.empty? && @shipping_address.errors.empty?
   end
 
   def update_shipping_address(params)
-    params_key = @order.use_billing ? :billing_address : :shipping_address
+    params_key = params[:use_billing] ? :billing_address : :shipping_address
     shipping_params = params[params_key]
     shipping_params[:kind] = :shipping
     @shipping_address = update_address(:shipping, shipping_params)
@@ -64,8 +66,17 @@ class OrderStepsForm
     @order.update(credit_card_id: credit_card.id) if @credit_card.errors.empty?
   end
 
+  def confirm_order
+    @order.update(
+      total_price: @order.total_with_delivery,
+      confirmation_token: Devise.friendly_token,
+      track_number: "R#{Time.now.strftime('%d%m%y%H%M%S')}"
+    )
+    @order.confirm
+    @order.save
+  end
+
   def set_card
-    # binding.pry
     @order.credit_card || @order.user.credit_cards.last || CreditCard.new(user: @order.user)
   end
 end
