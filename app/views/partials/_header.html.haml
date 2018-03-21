@@ -28,7 +28,7 @@
             %li
               %a{type: "button", 'data-toggle': "collapse", href: "#account", 'aria-expanded': "false", 'aria-controls': "account"}= t('navigation.account')
               %ul#account.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
-                %li= link_to(t('navigation.orders'), '#', class: 'collapse-link')
+                %li= link_to(t('navigation.orders'), orders_path, class: 'collapse-link')
                 %li= link_to(t('navigation.settings'), edit_user_registration_path, class: 'collapse-link')
             %li.divider{role: "separator"}
             %li= link_to(t('navigation.log_out'), destroy_user_session_path, method: :delete)
@@ -47,7 +47,7 @@
             %li.dropdown
               %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('navigation.account')
               %ul.dropdown-menu
-                %li= link_to(t('navigation.orders'), '#')
+                %li= link_to(t('navigation.orders'), orders_path)
                 %li= link_to(t('navigation.settings'), edit_user_registration_path)
                 %li.divider{role: "separator"}
                 %li= link_to(t('navigation.log_out'), destroy_user_session_path, method: :delete)

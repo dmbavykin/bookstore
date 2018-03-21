@@ -8,6 +8,8 @@ class Order < ApplicationRecord
   has_one :coupon, dependent: :nullify
   validates_presence_of :state
   scope :in_progress, -> { where(state: 'filling') }
+  scope :executed, -> { where.not(state: 'filling') }
+  scope :by_state, ->(state) { where(state: state) }
   accepts_nested_attributes_for :addresses
 
   aasm column: :state do
@@ -41,6 +43,10 @@ class Order < ApplicationRecord
 
   def send_confirmation
     OrderMailer.confirm_order(user, self).deliver_now
+  end
+
+  def self.aasm_states
+    aasm.states.map(&:name)
   end
 
 end

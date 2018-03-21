@@ -6,7 +6,7 @@
           %li= link_to(t('navigation.home'), root_path, class: 'nav-link')
           %li= link_to(t('navigation.catalog'), categories_path, class: 'nav-link')
           - if current_user
-            %li= link_to(t('navigation.orders'), '#', class: 'nav-link')
+            %li= link_to(t('navigation.orders'), orders_path, class: 'nav-link')
             %li= link_to(t('navigation.settings'), edit_user_registration_path, class: 'nav-link')
           - else
             %li= link_to(t('navigation.log_in'), new_user_session_path, class: 'nav-link')

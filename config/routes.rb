@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: :edit
   resources :addresses, only: %i[create update]
-  resources :order do
+  resources :orders do
     get '/confirm/:token', to: 'orders#confirm', as: 'confirm'
   end
   resources :order_steps, only: %i[index show update]

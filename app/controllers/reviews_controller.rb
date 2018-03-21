@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  load_resource :book
+  load_and_authorize_resource :book
 
   def create
     @review = current_user.reviews.create(review_params.merge(book: @book))
