@@ -1,9 +1,13 @@
 class OrdersController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
 
   def index
     @orders = current_user.orders.executed
     @orders = @orders.by_state(params[:state].to_sym) if valid_state?
+  end
+
+  def show
+    @_order = Order.find_by(id: params[:id]).decorate
   end
 
   def confirm

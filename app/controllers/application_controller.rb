@@ -9,17 +9,17 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    (Order.find_by(id: session[:order_id]) || current_user&.orders&.in_progress&.last || new_session_order).decorate
+    Order.find_by(id: session[:order_id]) || Order.active_order_for_user(current_user)&.last || new_session_order
   end
 
   private
 
   def set_order
-    @order ||= current_order
+    @order ||= current_order.decorate
   end
 
   def new_session_order
-    order = Order.create
+    order = Order.create(user: current_user)
     session[:order_id] = order.id
     order
   end

@@ -1,7 +1,7 @@
 class OrderStepsController < ApplicationController
   include Wicked::Wizard
   steps :address, :delivery, :payment, :confirm, :complete
-  before_action :check_order, :relate_with_user, :set_form, :set_needful_step
+  before_action :authenticate_user!, :check_order, :relate_with_user, :set_form, :set_needful_step
 
   def index
     redirect_to_step(@needful_step)

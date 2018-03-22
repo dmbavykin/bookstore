@@ -10,6 +10,7 @@ class Order < ApplicationRecord
   scope :in_progress, -> { where(state: 'filling') }
   scope :executed, -> { where.not(state: 'filling') }
   scope :by_state, ->(state) { where(state: state) }
+  scope :active_order_for_user, ->(user) { where(user: user).in_progress }
   accepts_nested_attributes_for :addresses
 
   aasm column: :state do

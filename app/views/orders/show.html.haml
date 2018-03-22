@@ -1,12 +1,11 @@
 %main.container.general-main-wrap
-  = render 'order_steps/status'
+  %h1.general-title-margin= " Order #{@_order.track_number}"
   .row.mb-20
-    - @order.addresses.each do |address|
+    - @_order.addresses.each do |address|
       .col-sm-3
-        %h3.general-subtitle= "#{address.kind.capitalize} Address"
+        %h3.general-subtitle.mt-0= "#{address.kind.capitalize} Address"
         %p.general-address
           = "#{address.first_name} #{address.last_name}"
-          %span.general-edit= link_to 'edit', wizard_path(:address)
           %br
           = address.address
           %br
@@ -16,26 +15,23 @@
           %br
           = "Phone #{address.phone}"
     .col-sm-3
-      %h3.general-subtitle Shipments
+      %h3.general-subtitle.mt-0 Shipments
       %p.general-address
-        = @order.delivery.title
-        %span.general-edit= link_to 'edit', wizard_path(:delivery)
+        = @_order.delivery.title
         %br
-        = @order.delivery.days
+        = @_order.delivery.days
     .col-sm-3
-      %h3.general-subtitle Payment Information
+      %h3.general-subtitle.mt-0 Payment Information
       %p.general-address
-        = "** ** ** #{@form.credit_card.number.last(4)}"
-        %span.general-edit= link_to 'edit', wizard_path(:payment)
+        = "** ** ** #{@_order.credit_card.number.last(4)}"
         %br
-        = @form.credit_card.expiration_date
+        = @_order.credit_card.expiration_date
   .visible-xs
-    - @order.order_items.each do |order_item|
-      .general-cart-item.divider-lg
+    - @_order.order_items.each do |order_item|
+      .general-cart-item.divider-lg.mb-55
         .general-img-wrap-table
           = cl_image_tag(order_item.book.decorate.main_image, class: 'cart-img-shadow')
         %p.title= order_item.book.title
-        %p.in-grey-600.fw-300= order_item.book.description
         %table.table
           %tr
             %td
@@ -87,16 +83,14 @@
         %td
           %p.font-16 Subtotal:
         %td
-          %p.font-16= "€#{@order.subtotal}"
+          %p.font-16= "€#{@_order.subtotal}"
       %tr
         %td
           %p.font-16 Coupon:
         %td
-          %p.font-16= "€#{@order.sale}"
+          %p.font-16= "€#{@_order.sale}"
       %tr
         %td
           %strong.font-18 Order Total:
         %td
-          %strong.font-18= "€#{@order.total_with_delivery}"
-  .text-center
-    = link_to 'Place Order', wizard_path, class: 'btn btn-default mb-20', method: :put
+          %strong.font-18= "€#{@_order.total_with_delivery}"
