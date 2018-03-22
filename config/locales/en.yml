@@ -1,33 +1,65 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  main:
+    slider_buy_btn: Buy Now
+    previous_slide: Previous
+    next_slide: Next
+    welcome: Welcome to our amazing Bookstore!
+    welcome_subphrase: We pore through hundreds of new books each month and select the five best we can find to share with our members.
+    welcome_btn: Get Started
+    best_sellers: Best Sellers
+  navigation:
+    brand: Bookstore
+    home: Home
+    catalog: Shop
+    orders: Orders
+    settings: Settings
+    account: My Account
+    log_in: Log In
+    sign_up: Sign Up
+    log_out: Log Out
+  catalog:
+    all_categories_title: Catalog
+    all_categories: All
+    for_mobile:
+      filter_by_category: Filter by category
+      sort_by: Sort by
+  address:
+    successful:
+      create: Address successful created
+      update: Address successful updated
+    failure:
+      create: Address does not created
+      update: Address does not updated
+    inputs_placeholders:
+      first_name: First Name
+      last_name: Last Name
+      address: Address
+      city: City
+      zip: Zip
+      country: Country
+      phone: Example +355 66 123 4567
+    inputs_labels:
+      first_name: First Name
+      last_name: Last Name
+      address: Address
+      city: City
+      zip: Zip
+      country: Select a country
+      phone: Phone
+  review:
+    successful:
+      create: Thanks for Review. It will be published as soon as Admin will approve it.
+    failure:
+      create: Review does not sended
+  coupon:
+    not_exist: Coupon does not exist
+    used: Coupon alredy used
+    added: Coupon added
+    removed: Coupon removed
+  cart:
+    no_more: 'You can`t add more books'
+    no_less: 'You can`t buy less then one book'
+    successful_added: Book added successful
+    alredy_added: Book alredy added
+    empty: You`ve not any books in cart
+    removed_successful: Book successful removed from cart

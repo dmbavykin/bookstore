@@ -1,0 +1,15 @@
+.mb-20.make-review
+  .row
+    .col-md-5.col-xs-10
+      - if can? :create, Review
+        = simple_form_for :review, url: book_reviews_path(@book.id), validate: true do |f|
+          = f.input :name, placeholder: 'John Doe', input_html: { value: current_user.name },
+            label_html: { class: 'input-label' }, label: 'Your name'
+          = f.input :comment_text, placeholder: 'Very good review',
+            label_html: { class: 'input-label' }, label: 'Your review', as: :text
+          = f.hidden_field :rating, value: 10
+          = f.hidden_field :avatar, value: current_user.image
+          .mb-15.review-rating
+            - 10.times do |time|
+              %i.fa.fa-star{id: "star-#{time + 1}"}
+          = f.button :submit, value: 'Send review'
