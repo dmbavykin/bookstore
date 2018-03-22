@@ -10,7 +10,7 @@ class BookDecorator < ApplicationDecorator
   end
 
   def authors_names
-    authors.map{ |author| author.decorate.full_name }.join(', ')
+    authors.map { |author| author.decorate.full_name }.join(', ')
   end
 
   def dimensions

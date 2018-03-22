@@ -38,7 +38,7 @@ class Order < ApplicationRecord
     end
 
     event :cancel do
-      transitions from: %i(filling in_confirmation in_processing in_delivery completed), to: :canceled
+      transitions from: %i[filling in_confirmation in_processing in_delivery completed], to: :canceled
     end
   end
 
@@ -49,5 +49,4 @@ class Order < ApplicationRecord
   def self.aasm_states
     aasm.states.map(&:name)
   end
-
 end

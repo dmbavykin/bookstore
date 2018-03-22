@@ -11,9 +11,9 @@ class Ability
       can :manage, :all
     elsif user.confirmed_at
       can :create, Review, user_id: user.id
-      can [:read, :confirm], Order, user_id: user.id
-      can [:create, :update], Address, addressable_type: 'User', addressable_id: user.id
-      can [:create, :update], CreditCard, user_id: user.id
+      can %i[read confirm], Order, user_id: user.id
+      can %i[create update], Address, addressable_type: 'User', addressable_id: user.id
+      can %i[create update], CreditCard, user_id: user.id
     end
   end
 end

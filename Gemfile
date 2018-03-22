@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 ruby '2.4.2'
+gem 'aasm', '~> 4.12', '>= 4.12.3'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'cancancan', '~> 2.1', '>= 2.1.3'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
@@ -30,10 +31,10 @@ gem 'simple_form', '~> 3.5', '>= 3.5.1'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'uglifier', '>= 1.3.0'
-gem 'aasm', '~> 4.12', '>= 4.12.3'
 gem 'wicked', '~> 1.3', '>= 1.3.2'
 
 group :development, :test do
+  gem 'capybara', '~> 2.18'
   gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   gem 'ffaker', '~> 2.8', '>= 2.8.1'
@@ -41,7 +42,6 @@ group :development, :test do
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.2'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
-  gem 'capybara', '~> 2.18'
 end
 
 group :development do

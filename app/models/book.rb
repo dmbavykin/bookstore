@@ -1,12 +1,5 @@
 class Book < ApplicationRecord
-  FILTERS = {
-    newest: 'Newest first',
-    popular: 'Popular first',
-    price_asc: 'Price: Low to high',
-    price_desc: 'Price: High to low',
-    by_title_asc: 'Title: A - Z',
-    by_title_desc: 'Title: Z - A'
-  }.freeze
+  FILTERS = %i[newest popular price_asc price_desc by_title_asc by_title_desc].freeze
   DEFAULT_FILTER = :newest
 
   has_many :reviews, dependent: :destroy

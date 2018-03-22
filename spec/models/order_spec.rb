@@ -22,7 +22,7 @@ RSpec.describe Order, type: :model do
       end
     end
 
-    it "has one coupon" do
+    it 'has one coupon' do
       is_expected.to have_one(:coupon)
     end
   end

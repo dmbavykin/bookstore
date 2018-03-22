@@ -6,7 +6,7 @@ RSpec.describe BooksController, type: :controller do
 
   describe 'GET #show' do
     context 'assigns' do
-      it "assigns variables" do
+      it 'assigns variables' do
         allow(controller).to receive(:current_user).and_return user
         get :show, params: { id: book.id }
         expect(assigns(:book)).not_to be_nil

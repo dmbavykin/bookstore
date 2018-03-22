@@ -5,7 +5,7 @@ feature 'categories page' do
   let!(:web) { create(:category, title: 'Web') }
 
   background do
-    create_list(:book, 24, category: photo )
+    create_list(:book, 24, category: photo)
     create_list(:book, 24, category: web)
     visit categories_path
   end

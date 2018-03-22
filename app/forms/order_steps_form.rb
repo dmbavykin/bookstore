@@ -21,7 +21,7 @@ class OrderStepsForm
 
   def get_step
     case false
-    when @billing_address.valid? && @shipping_address.valid? then :address
+    when address(:billing) && address(:shipping) then :address
     when !@order.delivery.nil? then :delivery
     when @credit_card.valid? then :payment
     when !@order.filling? then :confirm
@@ -33,8 +33,7 @@ class OrderStepsForm
 
   def address(kind)
     return @order.addresses.find_by(kind: kind) if @order.addresses.find_by(kind: kind)
-    user_address = @order.user.addresses.find_by(kind: kind)
-    user_address ? user_address.dup : @order.addresses.new(kind: kind)
+    @order.user.addresses.find_by(kind: kind)
   end
 
   def update_addresses(params)

@@ -14,6 +14,6 @@ class CategoriesController < ApplicationController
   private
 
   def set_filter
-    @filter = Book::FILTERS.key?(params[:filter]&.to_sym) ? params[:filter] : Book::DEFAULT_FILTER
+    @filter = Book::FILTERS.include?(params[:filter]&.to_sym) ? params[:filter] : Book::DEFAULT_FILTER
   end
 end

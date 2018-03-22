@@ -28,7 +28,7 @@ RSpec.describe OrderItemsController, type: :controller do
   describe 'POST #create' do
     context 'successful response' do
       before do
-        post :create, params: { order_items: order_item_params}
+        post :create, params: { order_items: order_item_params }
       end
 
       it 'redirects to cart page' do
@@ -55,16 +55,15 @@ RSpec.describe OrderItemsController, type: :controller do
     end
 
     it 'creates order item record' do
-      expect { post :create, params: { order_items: order_item_params} }.to change(OrderItem, :count).by(1)
+      expect { post :create, params: { order_items: order_item_params } }.to change(OrderItem, :count).by(1)
     end
   end
 
   describe 'PUT #update' do
     it 'redirects to cart page' do
-      put :update, params: { id:order_item.id, order_items: order_item_params }
+      put :update, params: { id: order_item.id, order_items: order_item_params }
       expect(response).to redirect_to(order_items_path)
     end
-
   end
 
   describe 'DELETE #destroy' do
