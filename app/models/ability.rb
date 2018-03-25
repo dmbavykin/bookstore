@@ -1,12 +1,12 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize(user, order)
     user ||= User.new
 
     can :read, :all
-    can :manage, OrderItem
-    can :manage, Coupon
+    can :manage, OrderItem, order_id: order.id
+    can :manage, Coupon, order_id: order.id
     if user.admin
       can :manage, :all
     elsif user.confirmed_at

@@ -33,18 +33,18 @@ feature 'categories page' do
     background { click_link('filters-md') }
 
     scenario 'check filter exists' do
-      Book::FILTERS.values.each do |filter|
-        expect(page).to have_css('li a', text: filter)
+      Book::FILTERS.each do |filter|
+        expect(page).to have_css('li a', text: I18n.t("book.filters.#{filter}"))
       end
     end
 
-    Book::FILTERS.values.each do |filter|
+    Book::FILTERS.each do |filter|
       scenario "check filter #{filter} works" do
-        first('a', text: filter).click
+        first('a', text: I18n.t("book.filters.#{filter}")).click
         expect(page).to have_content(I18n.t('catalog.all_categories_title'))
         expect(page).to have_content(I18n.t('catalog.all_categories'))
         expect(page).to have_css('.pagination')
-        expect(page).to have_css('#filters-md', text: filter)
+        expect(page).to have_css('#filters-md', text: I18n.t("book.filters.#{filter}"))
         expect(page).to have_selector('.general-thumb-wrap', count: 12)
       end
     end

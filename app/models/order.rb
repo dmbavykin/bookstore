@@ -7,10 +7,9 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_one :coupon, dependent: :nullify
   validates_presence_of :state
-  scope :in_progress, -> { where(state: 'filling') }
+  scope :in_progress, -> { find_by(state: 'filling') }
   scope :executed, -> { where.not(state: 'filling') }
   scope :by_state, ->(state) { where(state: state) }
-  scope :active_order_for_user, ->(user) { where(user: user).in_progress }
   accepts_nested_attributes_for :addresses
 
   aasm column: :state do
@@ -48,5 +47,9 @@ class Order < ApplicationRecord
 
   def self.aasm_states
     aasm.states.map(&:name)
+  end
+
+  def self.active_order_for_user(user)
+    find_by(user: user, state: 'filling')
   end
 end

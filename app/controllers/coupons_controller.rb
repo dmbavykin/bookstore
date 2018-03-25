@@ -1,4 +1,6 @@
 class CouponsController < ApplicationController
+  authorize_resource
+
   def create
     coupon = Coupon.find_by(code: coupon_params[:code])
     return redirect_to order_items_path, alert: t('coupon.not_exist') unless coupon
@@ -8,7 +10,7 @@ class CouponsController < ApplicationController
   end
 
   def destroy
-    Coupon.find(params[:id]).update(order_id: nil)
+    @order.coupon.update(order_id: nil)
     redirect_to order_items_path, notice: t('coupon.removed')
   end
 

@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def update_order
-    previous_order = resource.orders&.in_progress&.first
+    previous_order = Order.active_order_for_user(resource)
     previous_order ? update_previous_order(previous_order) : @order.update(user: resource)
   end
 

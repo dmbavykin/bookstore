@@ -75,3 +75,5 @@ en:
     confirmed: Order confirmed
     confirm_email_subject: Confirm your order
     wrong_token: Wrong token
+    delivery:
+      error: Choose delivery method

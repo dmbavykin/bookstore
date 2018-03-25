@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  load_resource
+  load_and_authorize_resource
   before_action :set_filter
 
   def index
