@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe HomeController, type: :controller do
   describe 'GET #index' do
     before { get :index }

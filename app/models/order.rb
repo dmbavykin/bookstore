@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Order < ApplicationRecord
   include AASM
   belongs_to :user, optional: true
@@ -6,7 +8,7 @@ class Order < ApplicationRecord
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :order_items, dependent: :destroy
   has_one :coupon, dependent: :nullify
-  validates_presence_of :state
+  validates :state, presence: true
   scope :in_progress, -> { find_by(state: 'filling') }
   scope :executed, -> { where.not(state: 'filling') }
   scope :by_state, ->(state) { where(state: state) }

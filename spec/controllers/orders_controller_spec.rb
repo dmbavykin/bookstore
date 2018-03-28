@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe OrdersController, type: :controller do
   let(:user) { create(:user) }
   let!(:order) { create(:order, user: user, state: 'completed') }

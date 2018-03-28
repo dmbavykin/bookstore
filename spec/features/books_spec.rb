@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'categories page' do
   let(:user) { create(:user) }
   let!(:book) { create(:book).decorate }

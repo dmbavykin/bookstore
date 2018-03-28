@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 class Coupon < ApplicationRecord
   belongs_to :order, optional: true
-  validates_presence_of :code, :sale
+  validates :code, :sale, presence: true
 end

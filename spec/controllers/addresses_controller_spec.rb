@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe AddressesController, type: :controller do
   let(:user) { create(:user) }
   let(:address) { user.addresses.create(FactoryBot.attributes_for(:address, :shipping).stringify_keys) }

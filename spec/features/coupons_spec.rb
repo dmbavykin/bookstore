@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'cart coupons' do
   let!(:book) { create(:book) }
   let!(:user) { create(:user) }

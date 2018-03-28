@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrderStepsForm
   include ActiveModel::Model
   attr_accessor :billing_address, :shipping_address, :deliveries, :credit_card

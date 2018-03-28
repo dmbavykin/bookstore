@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrderStepsController < ApplicationController
   include Wicked::Wizard
   steps :address, :delivery, :payment, :confirm, :complete

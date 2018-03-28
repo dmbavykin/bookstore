@@ -6,15 +6,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.save
     yield resource if block_given?
     return handle_unsaved_resource unless resource.persisted?
-    @order.update(user: resource) if @order
+    @order&.update(user: resource)
     resource.active_for_authentication? ? successful_response : unsuccessful_response
   end
 
   protected
 
   def update_resource(resource, params)
-    return super if params["password"]&.present?
-    resource.update_without_password(params.except("current_password"))
+    return super if params['password']&.present?
+    resource.update_without_password(params.except('current_password'))
   end
 
   def handle_unsaved_resource

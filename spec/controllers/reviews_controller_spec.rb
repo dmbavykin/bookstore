@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe ReviewsController, type: :controller do
   let(:user) { create(:user) }
   let(:book) { create(:book) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Book < ApplicationRecord
   FILTERS = %i[newest popular price_asc price_desc by_title_asc by_title_desc].freeze
   DEFAULT_FILTER = :newest
@@ -8,8 +10,8 @@ class Book < ApplicationRecord
   belongs_to :category
   has_and_belongs_to_many :authors
   validates :title, :price, :quantity, presence: true
-  validates_numericality_of :publication_year, less_than_or_equal_to: Time.current.year
-  validates_numericality_of :height, :width, :depth, greater_than: 0
+  validates :publication_year, numericality: { less_than_or_equal_to: Time.current.year }
+  validates :height, :width, :depth, numericality: { greater_than: 0 }
 
   scope :for_slider, -> { order(:created_at).last(3) }
   scope :best_sellers, -> { order(:created_at).last(4) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'main page' do
   let(:book) { Book.last }
   let(:user) { create(:user) }

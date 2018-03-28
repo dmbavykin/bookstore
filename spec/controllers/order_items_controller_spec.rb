@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe OrderItemsController, type: :controller do
   let(:user) { create(:user) }
   let(:book) { create(:book) }

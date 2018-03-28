@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe CouponsController, type: :controller do
   let!(:user) { create(:user) }
   let!(:order) { FactoryBot.create(:order, user: user) }

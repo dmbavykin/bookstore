@@ -1,0 +1,79 @@
+ru:
+  main:
+    slider_buy_btn: Купить прямо сейчас
+    previous_slide: Предыдущий
+    next_slide: Следующий
+    welcome: Добро пожаловать в наш замечательный Букстор!
+    welcome_subphrase: Каждый месяц мы читаем сотни новых книг и выбираем пять лучших, которые мы можем найти, чтобы поделиться с нашими участниками.
+    welcome_btn: Начать
+    best_sellers: Наиболее продаваемые
+  book:
+    filters:
+      newest: Молодым дорога
+      popular: Давай по старее
+      price_asc: Сначала дешевые
+      price_desc: Сначала дорогие
+      by_title_asc: По алфавиту от А до Я
+      by_title_desc: По алфавиту от Я до А
+  navigation:
+    brand: Букстор
+    home: Домой
+    catalog: Магазин
+    orders: Заказы
+    settings: Настройки
+    account: Мой аккаунт
+    log_in: Войти
+    sign_up: Зарегестрироваться
+    log_out: Выйти
+  catalog:
+    all_categories_title: Каталог
+    all_categories: Все
+    for_mobile:
+      filter_by_category: Фильтровать по категории
+      sort_by: Сортировать по
+  address:
+    successful:
+      create: Адрес успешно создан
+      update: Адрес успешно обновлен
+    failure:
+      create: Адрес не создан
+      update: Адрес не обновлен
+    inputs_placeholders:
+      first_name: Имя
+      last_name: Фамилия
+      address: Адрес
+      city: Город
+      zip: Почтовый индекс
+      country: Страна
+      phone: Например +355 66 123 4567
+    inputs_labels:
+      first_name: Имя
+      last_name: Фамилия
+      address: Адресс
+      city: Город
+      zip: Почтовый индекс
+      country: Выберите страну
+      phone: Телефон
+  review:
+    successful:
+      create: Спасибо за отзыв. Он будет опубликован, как только Администратор одобрит его.
+    failure:
+      create: Отзыв не отправлен
+  coupon:
+    not_exist: Купон не найден
+    used: Купон использован
+    added: Купон добавлен к заказу
+    removed: Купон удален
+  cart:
+    no_more: Вы не можете приобрести больше книг
+    no_less: Вы не можете купить менее одной книги
+    successful_added: Книга успешно добавлена
+    alredy_added: Книга уже добавлена
+    empty: Ваша корзина пуста
+    removed_successful: Книга успешна удалена из корзины
+  order:
+    confirmed: Заказ подтвержден
+    confirm_email_subject: Подтвердите ваш заказ
+    wrong_token: Неверный токен
+    delivery:
+      error: Выберите метод доставки

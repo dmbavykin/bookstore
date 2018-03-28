@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe CategoriesController, type: :controller do
   let(:book) { FactoryBot.create(:book) }
 

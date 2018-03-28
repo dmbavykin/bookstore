@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'categories page' do
   let!(:photo) { create(:category, title: 'Photo') }
   let!(:web) { create(:category, title: 'Web') }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'cart page' do
   let!(:book) { create(:book, quantity: 2) }
   let!(:user) { create(:user) }
