@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'categories page' do
   let(:user) { create(:user) }
   let!(:book) { create(:book).decorate }

@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-RSpec.describe CouponsController, type: :controller do
+describe CouponsController, type: :controller do
   let!(:user) { create(:user) }
   let!(:order) { FactoryBot.create(:order, user: user) }
   let!(:coupon) { FactoryBot.create(:coupon, order: order) }

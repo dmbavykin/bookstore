@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'main page' do
   let(:book) { Book.last }
   let(:user) { create(:user) }

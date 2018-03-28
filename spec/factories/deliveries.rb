@@ -3,6 +3,6 @@ FactoryBot.define do
     title { FFaker::Book.title }
     days { FFaker::Book.description }
     price { rand(1.1...99.9).truncate(2) }
-    active
+    active { true }
   end
 end

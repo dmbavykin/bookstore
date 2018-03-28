@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-RSpec.describe BooksController, type: :controller do
+describe BooksController, type: :controller do
   let(:user) { create(:user) }
   let(:book) { create(:book) }
 

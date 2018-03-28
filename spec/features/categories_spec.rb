@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'categories page' do
   let!(:photo) { create(:category, title: 'Photo') }
   let!(:web) { create(:category, title: 'Web') }
