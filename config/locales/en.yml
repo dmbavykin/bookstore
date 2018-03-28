@@ -77,3 +77,5 @@ en:
     wrong_token: Wrong token
     delivery:
       error: Choose delivery method
+  checkout:
+    confirm_step_btn: Save and Continue

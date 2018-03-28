@@ -24,7 +24,7 @@ class BookDecorator < ApplicationDecorator
   end
 
   def wrapper_class(disabled)
-    'thumbnail general-thumbnail' << (disabled ? ' disabled' : '')
+    'thumbnail general-thumbnail' + (disabled ? ' disabled' : '')
   end
 
   def reviews_count
