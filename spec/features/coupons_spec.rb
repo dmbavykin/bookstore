@@ -19,6 +19,6 @@ feature 'cart coupons' do
     visit order_items_path
     click_link('coupon-code-btn')
     expect(page).to have_css('.alert-success', text: I18n.t('coupon.removed'))
-    expect(page).to have_content("€0.0")
+    expect(page).to have_content('€0.0')
   end
 end

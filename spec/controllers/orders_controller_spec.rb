@@ -49,7 +49,7 @@ describe OrdersController, type: :controller do
     context 'calling needed methods' do
       after { get :show, params: { id: order.id }, session: { order_id: order.id } }
       it 'finds needed order' do
-        expect(Order).to receive(:find_by).with({ id: order.id.to_s }).and_call_original
+        expect(Order).to receive(:find_by).with(id: order.id.to_s).and_call_original
       end
 
       it 'calls chain methods' do

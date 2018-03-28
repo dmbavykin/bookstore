@@ -30,7 +30,6 @@ describe OrderStepsController, type: :controller do
       end
 
       context 'render needful step' do
-
         %i[address delivery payment confirm complete].each do |step|
           it "renders #{step} and has status 200" do
             get :show, params: { id: step }, session: { order_id: order.id }
