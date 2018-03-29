@@ -13,7 +13,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def update_resource(resource, params)
-    return super if params['password']&.present?
+    if params['password']&.present?
+      result = super
+      set_flash_message!(:alert, :password_error) unless result
+      return result
+    end
     resource.update_without_password(params.except('current_password'))
   end
 
