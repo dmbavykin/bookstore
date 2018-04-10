@@ -71,4 +71,4 @@
             %td
               %strong.font-18= "€#{@order.total}"
       .text-center
-        = submit_tag('Save and Continue', class: 'btn btn-default mb-20')
+        = submit_tag(t('checkout.confirm_step_btn'), class: 'btn btn-default mb-20', id: 'deliveries-submit-btn')

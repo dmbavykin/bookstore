@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrderStepsController < ApplicationController
   include Wicked::Wizard
   steps :address, :delivery, :payment, :confirm, :complete
@@ -8,20 +10,20 @@ class OrderStepsController < ApplicationController
   end
 
   def show
-    redirect_to_step(@needful_step) and return if wrong_step?
+    redirect_to_step(@needful_step) && return if wrong_step?
     render_wizard
     session[:order_id] = nil if step == :complete
   end
 
   def update
-    redirect_to_step(next_step) and return if @form.update(step, order_params)
+    redirect_to_step(next_step) && return if @form.update(step, order_params)
     render_wizard
   end
 
   private
 
   def check_order
-    redirect_to root_path, alert: 'Your cart is empty' unless OrderItem.where(order: @order).any?
+    redirect_to root_path, alert: t('cart.empty') unless OrderItem.where(order: @order).any?
   end
 
   def relate_with_user

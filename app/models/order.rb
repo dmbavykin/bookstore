@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Order < ApplicationRecord
   include AASM
   belongs_to :user, optional: true
@@ -6,11 +8,10 @@ class Order < ApplicationRecord
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :order_items, dependent: :destroy
   has_one :coupon, dependent: :nullify
-  validates_presence_of :state
-  scope :in_progress, -> { where(state: 'filling') }
+  validates :state, presence: true
+  scope :in_progress, -> { find_by(state: 'filling') }
   scope :executed, -> { where.not(state: 'filling') }
   scope :by_state, ->(state) { where(state: state) }
-  scope :active_order_for_user, ->(user) { where(user: user).in_progress }
   accepts_nested_attributes_for :addresses
 
   aasm column: :state do
@@ -38,7 +39,7 @@ class Order < ApplicationRecord
     end
 
     event :cancel do
-      transitions from: %i(filling in_confirmation in_processing in_delivery completed), to: :canceled
+      transitions from: %i[filling in_confirmation in_processing in_delivery completed], to: :canceled
     end
   end
 
@@ -50,4 +51,7 @@ class Order < ApplicationRecord
     aasm.states.map(&:name)
   end
 
+  def self.active_order_for_user(user)
+    find_by(user: user, state: 'filling')
+  end
 end

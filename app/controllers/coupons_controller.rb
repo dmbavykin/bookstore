@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 class CouponsController < ApplicationController
+  authorize_resource
 
   def create
     coupon = Coupon.find_by(code: coupon_params[:code])
@@ -9,7 +12,7 @@ class CouponsController < ApplicationController
   end
 
   def destroy
-    Coupon.find(params[:id]).update(order_id: nil)
+    @order.coupon.update(order_id: nil)
     redirect_to order_items_path, notice: t('coupon.removed')
   end
 

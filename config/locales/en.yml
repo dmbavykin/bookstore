@@ -7,6 +7,14 @@ en:
     welcome_subphrase: We pore through hundreds of new books each month and select the five best we can find to share with our members.
     welcome_btn: Get Started
     best_sellers: Best Sellers
+  book:
+    filters:
+      newest: Newest first
+      popular: Popular first
+      price_asc: "Price: Low to high"
+      price_desc: "Price: High to low"
+      by_title_asc: "Title: A - Z"
+      by_title_desc: "Title: Z - A"
   navigation:
     brand: Bookstore
     home: Home
@@ -63,3 +71,11 @@ en:
     alredy_added: Book alredy added
     empty: You`ve not any books in cart
     removed_successful: Book successful removed from cart
+  order:
+    confirmed: Order confirmed
+    confirm_email_subject: Confirm your order
+    wrong_token: Wrong token
+    delivery:
+      error: Choose delivery method
+  checkout:
+    confirm_step_btn: Save and Continue

@@ -1,10 +1,13 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe CouponsController, type: :controller do
-  let(:order) { FactoryBot.create(:order) }
-  let(:coupon) { FactoryBot.create(:coupon, order: order) }
+describe CouponsController, type: :controller do
+  let!(:user) { create(:user) }
+  let!(:order) { FactoryBot.create(:order, user: user) }
+  let!(:coupon) { FactoryBot.create(:coupon, order: order) }
   let(:unused_coupon) { FactoryBot.create(:coupon, :without_order) }
   let(:invalid_coupon) { FactoryBot.attributes_for(:coupon, :invalid).stringify_keys }
+
+  before { allow(controller).to receive(:current_user).and_return(user) }
 
   describe 'POST #create' do
     context 'coupon does not exist' do

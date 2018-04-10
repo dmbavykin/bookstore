@@ -71,15 +71,14 @@
     .row
       .col-sm-4
         - if @order.coupon
-          = link_to 'Remove Coupon', coupon_path(@order.coupon), class: 'btn btn-primary mr-5 mb-15', method: :delete
+          = link_to 'Remove Coupon', coupon_path(@order.coupon), class: 'btn btn-primary mr-5 mb-15', id: 'coupon-code-btn', method: :delete
         - else @order.coupon
           = simple_form_for(:coupon, url: coupons_path, method: :post) do |f|
             .input-group.general-input-group
               = f.input :code, placeholder: 'Enter Your Coupon Code', input_html: { class: 'mb-30' },
                 label_html: { class: 'input-label' }, label: 'Enter Your Coupon Code'
               %div
-                = f.button :submit, class: 'btn btn-primary mr-5 mb-15', value: 'Apply Coupon'
-        %button.btn.btn-primary.mb-15.res-block Update cart
+                = f.button :submit, class: 'btn-primary mr-5 mb-15', value: 'Apply Coupon', id: 'coupon-code-btn'
       .col-sm-8
         .res-mr-200.text-center.general-text-right
           %p.in-gold-500.font-18 Order Summary

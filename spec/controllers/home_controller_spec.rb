@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe HomeController, type: :controller do
+describe HomeController, type: :controller do
   describe 'GET #index' do
     before { get :index }
     it 'assigns variables' do

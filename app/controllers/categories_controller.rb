@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
-  load_resource
+  load_and_authorize_resource
   before_action :set_filter
 
   def index
@@ -14,6 +16,6 @@ class CategoriesController < ApplicationController
   private
 
   def set_filter
-    @filter = Book::FILTERS.key?(params[:filter]&.to_sym) ? params[:filter] : Book::DEFAULT_FILTER
+    @filter = Book::FILTERS.include?(params[:filter]&.to_sym) ? params[:filter] : Book::DEFAULT_FILTER
   end
 end

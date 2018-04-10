@@ -1,4 +1,4 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
 feature 'categories page' do
   let(:user) { create(:user) }

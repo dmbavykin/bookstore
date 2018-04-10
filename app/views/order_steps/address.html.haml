@@ -1,6 +1,6 @@
 %main.container
   = render 'order_steps/status'
-  = form_tag(wizard_path, class: 'res-mb-100', method: :put) do
+  = form_tag(wizard_path, class: 'res-mb-100', id: 'addresses_form', method: :put) do
     .hidden-xs.hidden-sm
       .row
         .col-md-5
@@ -34,4 +34,4 @@
             %p.font-16 Order Total:
           %td
             %p.font-16= "€#{@order.total}"
-    = submit_tag 'Save and Continue', class:'btn btn-default center-block mb-20'
+    = submit_tag t('checkout.confirm_step_btn'), class:'btn btn-default center-block mb-20', id: 'addresses-submit-btn'

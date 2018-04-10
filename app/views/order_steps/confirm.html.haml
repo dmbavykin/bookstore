@@ -99,4 +99,4 @@
         %td
           %strong.font-18= "€#{@order.total_with_delivery}"
   .text-center
-    = link_to 'Place Order', wizard_path, class: 'btn btn-default mb-20', method: :put
+    = link_to 'Place Order', wizard_path, class: 'btn btn-default mb-20', id: 'confirm-submit-btn', method: :put

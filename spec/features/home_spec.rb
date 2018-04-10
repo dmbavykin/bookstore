@@ -1,4 +1,4 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
 feature 'main page' do
   let(:book) { Book.last }

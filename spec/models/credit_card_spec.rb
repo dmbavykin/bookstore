@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CreditCard, type: :model do
   let(:credit_card) { FactoryBot.create :credit_card }
 
   context 'validates' do
-    %i[number cvv expiration_month expiration_year card_name].each do |field|
+    %i[number cvv expiration_date card_name].each do |field|
       it "invalid without #{field}" do
         is_expected.to validate_presence_of(field)
       end

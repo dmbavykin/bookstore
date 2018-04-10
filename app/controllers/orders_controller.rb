@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   authorize_resource
 
@@ -15,9 +17,9 @@ class OrdersController < ApplicationController
     if order.confirmation_token == params[:token]
       order.process
       order.save
-      return redirect_to root_path, notice: 'Order confirmed'
+      return redirect_to root_path, notice: t('order.confirmed')
     end
-    redirect_to root_path, alert: 'Wrong token'
+    redirect_to root_path, alert: t('order.wrong_token')
   end
 
   private

@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe CategoriesController, type: :controller do
+describe CategoriesController, type: :controller do
   let(:book) { FactoryBot.create(:book) }
 
   describe 'GET #index' do

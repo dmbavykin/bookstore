@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrderStepsForm
   include ActiveModel::Model
   attr_accessor :billing_address, :shipping_address, :deliveries, :credit_card
@@ -21,9 +23,9 @@ class OrderStepsForm
 
   def get_step
     case false
-    when @billing_address.valid? && @shipping_address.valid? then :address
+    when !nil_or_invalid?(@billing_address) && !nil_or_invalid?(@shipping_address) then :address
     when !@order.delivery.nil? then :delivery
-    when @credit_card.valid? then :payment
+    when !nil_or_invalid?(@credit_card) then :payment
     when !@order.filling? then :confirm
     else :complete
     end
@@ -33,8 +35,7 @@ class OrderStepsForm
 
   def address(kind)
     return @order.addresses.find_by(kind: kind) if @order.addresses.find_by(kind: kind)
-    user_address = @order.user.addresses.find_by(kind: kind)
-    user_address ? user_address.dup : @order.addresses.new(kind: kind)
+    @order.user.addresses.find_by(kind: kind)
   end
 
   def update_addresses(params)
@@ -62,7 +63,8 @@ class OrderStepsForm
   end
 
   def update_payment(params)
-    @credit_card.update(params[:credit_card])
+    credit_card_params = params[:credit_card].merge(user: @order.user)
+    @credit_card ? @credit_card.update(credit_card_params) : @credit_card = CreditCard.create(credit_card_params)
     @order.update(credit_card_id: credit_card.id) if @credit_card.errors.empty?
   end
 
@@ -77,6 +79,10 @@ class OrderStepsForm
   end
 
   def set_card
-    @order.credit_card || @order.user.credit_cards.last || CreditCard.new(user: @order.user)
+    @order.credit_card || @order.user.credit_cards.last
+  end
+
+  def nil_or_invalid?(obj)
+    obj.nil? || obj.invalid?
   end
 end

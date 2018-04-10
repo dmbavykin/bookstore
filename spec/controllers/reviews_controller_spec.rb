@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe ReviewsController, type: :controller do
+describe ReviewsController, type: :controller do
   let(:user) { create(:user) }
   let(:book) { create(:book) }
   let(:review_params) { FactoryBot.attributes_for(:review).stringify_keys }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BookDecorator < ApplicationDecorator
   delegate_all
 
@@ -10,7 +12,7 @@ class BookDecorator < ApplicationDecorator
   end
 
   def authors_names
-    authors.map{ |author| author.decorate.full_name }.join(', ')
+    authors.map { |author| author.decorate.full_name }.join(', ')
   end
 
   def dimensions
@@ -22,7 +24,7 @@ class BookDecorator < ApplicationDecorator
   end
 
   def wrapper_class(disabled)
-    'thumbnail general-thumbnail' << (disabled ? ' disabled' : '')
+    'thumbnail general-thumbnail' + (disabled ? ' disabled' : '')
   end
 
   def reviews_count
