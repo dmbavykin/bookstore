@@ -6,8 +6,8 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
   has_many :addresses, as: :addressable
   has_many :reviews, dependent: :destroy
-  has_many :orders, dependent: :destroy
-  has_many :credit_cards, dependent: :nullify
+  has_many :credit_cards, class_name: 'ShoppyCartus::CreditCard'
+  has_many :orders, class_name: 'ShoppyCartus::Order'
 
   def self.new_with_session(params, session)
     super.tap do |user|
