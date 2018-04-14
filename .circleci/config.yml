@@ -6,13 +6,17 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-       - image: circleci/ruby:2.4.2-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      - image: circleci/ruby:2.4.2-node-browsers
+        environment:
+          PGHOST: 127.0.0.1
+          PGUSER: bzmskqzkbvsucn
+          RAILS_ENV: test
+          CLOUDINARY_URL: cloudinary://234956873979947:3HOmVrhW3k7BAiWPDvUgKRkS8dY@bavykin
+      - image: circleci/postgres:9.4
+        environment:
+          POSTGRES_USER: bzmskqzkbvsucn
+          POSTGRES_DB: deur858uhr888o
+          POSTGRES_PASSWORD: d0b11da531207a7ad15341387aeb24e1e4af6fa10fd338e8abbed7235795ca71
 
     working_directory: ~/repo
 
@@ -48,7 +52,6 @@ jobs:
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
 
             bundle exec rspec --format progress \
-                            --format RspecJunitFormatter \
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
                             $TEST_FILES
