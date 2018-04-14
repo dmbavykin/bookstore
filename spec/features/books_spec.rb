@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+  # frozen_string_literal: true
 
 feature 'categories page' do
   let(:user) { create(:user) }
@@ -15,11 +15,6 @@ feature 'categories page' do
     expect(page).to have_css('p', text: book.price.to_f)
     expect(page).to have_css('p', text: book.description)
     expect(page).to have_css('p', text: book.dimensions)
-  end
-
-  scenario 'buy a book' do
-    find('.order_items .btn').click
-    expect(page).to have_css('.alert-success', text: I18n.t('cart.successful_added'))
   end
 
   scenario 'reviews exists' do

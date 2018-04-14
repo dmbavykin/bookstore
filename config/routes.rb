@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   }
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount ShoppyCartus::Engine => '/shoppy_cartus', as: 'shoppy_cartus'
   root 'home#index'
   resources :categories, only: %i[index show]
   resources :books, only: :show do
@@ -15,10 +16,4 @@ Rails.application.routes.draw do
   end
   resources :users, only: :edit
   resources :addresses, only: %i[create update]
-  resources :orders do
-    get '/confirm/:token', to: 'orders#confirm', as: 'confirm'
-  end
-  resources :order_steps, only: %i[index show update]
-  resources :order_items, except: %i[new edit show]
-  resources :coupons, only: %i[create destroy]
 end

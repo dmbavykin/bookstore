@@ -10,6 +10,7 @@ module ApplicationHelper
   end
 
   def book_in_cart
-    @order.order_items.count
+    # @order.order_items.count
+    0
   end
 end

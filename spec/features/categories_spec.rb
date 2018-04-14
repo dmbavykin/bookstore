@@ -61,11 +61,6 @@ feature 'categories page' do
     end
   end
 
-  scenario 'adding book to cart' do
-    first('.shopping-cart-buy-btn').click
-    expect(page).to have_css('.alert-success', text: I18n.t('cart.successful_added'))
-  end
-
   scenario 'show book' do
     first('.eye-show-book-btn').click
     expect(page).to have_css('.img-responsive')
